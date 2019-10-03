@@ -1,0 +1,17 @@
+h1 記事一覧 
+
+.nav.justify-content--end
+        = link_to '新規登録', new_article_path, class: 'btn btn-primary'
+
+.row
+    - @articles.each do |article|
+        .col-md-4.mb-3
+                .card.mb-3                
+                    = link_to image_tag(article.photo.url), article_path(article)
+                    .card-body.d-flex.justify-content-between
+                        .row
+                            ul
+                                li= article.user.name
+                                li= article.comment
+                                li= link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-3'
+                                li= link_to '削除', article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'

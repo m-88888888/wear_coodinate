@@ -41,6 +41,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails' 
   gem 'factory_bot_rails'
+  gem 'rubocop', require: false
+  gem 'onkcop', require: false
 end
 
 group :development do
@@ -67,3 +69,8 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap'
 gem 'rails-i18n', '~> 5.1'
+gem 'carrierwave', '~> 2.0', '>= 2.0.1'
+gem 'mini_magick', '~> 4.9', '>= 4.9.5'
+gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
