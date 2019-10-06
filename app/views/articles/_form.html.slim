@@ -1,9 +1,20 @@
-= form_with model: @article do |f|
-    .form-group
+= form_with model: article, local: true do |f|
+
+    .field
         = f.label :photo
         = f.file_field :photo
-    .form-group
+    .field
         = f.label :comment
         = f.text_field :comment 
 
-    = f.submit nil, class: 'btn btn-primary'
+
+    = f.nested_fields_for :gears, wrapper_tag: :div do |g|
+        = g.label :gear_image
+        = g.file_field :gear_image
+        = g.label :url
+        = g.url_field :url
+        = g.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button'
+    = f.add_nested_fields_link :gears, 'Add', class: 'btn btn-primary', role: 'button'
+
+    .actions
+        = f.submit nil, class: 'btn btn-primary'

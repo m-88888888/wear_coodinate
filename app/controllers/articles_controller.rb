@@ -5,10 +5,13 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    @article = Article.find(params[:id])
+    @gears = @article.gears.all
   end
 
   def new
     @article = Article.new
+    @article.gears.build
   end
 
   def create
@@ -37,6 +40,6 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit(:photo, :comment)
+      params.require(:article).permit(:photo, :comment, gears_attributes:[:id, :url, :gear_image])
     end
 end
