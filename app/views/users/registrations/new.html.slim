@@ -1,4 +1,4 @@
-h2
+h1
   | Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
@@ -19,6 +19,14 @@ h2
     = f.label :password_confirmation
     br
     = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field
+    = f.label :name
+    br
+    = f.text_field :name
+  .field
+    = f.label :profile_image
+    br
+    = f.file_field :profile_image
   .actions
     = f.submit "Sign up"
 = render "users/shared/links"

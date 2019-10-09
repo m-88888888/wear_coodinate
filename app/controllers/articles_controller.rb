@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, only: [:create, :destroy, :update]
 
   def index
     @articles = Article.all
@@ -17,18 +18,28 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
-    @article.save
-    redirect_to articles_path, notice: "記事を登録しました。"
+    if @article.save
+      redirect_to articles_path, notice: "記事を登録しました。"
+    else
+      # redirect_to new_article_path
+      render :new
+    end
+
   end
 
   def edit
     @article = Article.find(params[:id])
+    @article.gears.build
   end
 
   def update
-    article = Article.find(params[:id])
-    article.update!(article_params)
-    redirect_to articles_path, notice: "記事を更新しました。"
+    @article = Article.find(params[:id])
+    @article.user_id = current_user.id
+    if @article.update(article_params)
+      redirect_to articles_path, notice: "記事を更新しました。"
+    else
+      render :edit
+    end
   end
 
   def destroy

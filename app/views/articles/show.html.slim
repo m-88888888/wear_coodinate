@@ -1,8 +1,21 @@
-h1 Articles#show
-p Find me in app/views/articles/show.html.slim
+h1 
+    | 詳細
 
-p= @article.comment
+h2
+    | ユーザー
+= @article.user.name
+= image_tag @article.user.profile_image.to_s
+
+h2 
+    | 記事
+= link_to image_tag(@article.photo.url), article_path(@article)
+= @article.comment
+
+h2
+    | ギア
 
 - @gears.each do |gear|
+    = link_to image_tag gear.gear_image.to_s
     p= gear.url
+
 
