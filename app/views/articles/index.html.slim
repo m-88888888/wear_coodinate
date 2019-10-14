@@ -1,18 +1,48 @@
-h1 記事一覧 
+h1 通常記事一覧
 
-.nav.justify-content--end
-    - if user_signed_in?
-        = link_to '新規登録', new_article_path, class: 'btn btn-primary'
+.container
+        .row
+            .card-group
+                - @articles.each do |article|
+                    .col-md-4
+                        .card
+                            = link_to image_tag(article.photo.thumb.to_s), article_path(article), class: "card-img-top"
+                            .card-body
+                                .row
+                                    = image_tag(article.user.profile_image.to_s)
+                                    = article.user.name
 
-.row
-    - @articles.each do |article|
-        .col-md-4.mb-3
-                .card.mb-3                
-                    = link_to image_tag(article.photo.to_s), article_path(article)
-                    .card-body.d-flex.justify-content-between
-                        .row
-                            ul
-                                li= article.user.name
-                                li= article.comment
-                                li= link_to '編集', edit_article_path(article), class: 'btn btn-primary mr-3'
-                                li= link_to '削除', article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

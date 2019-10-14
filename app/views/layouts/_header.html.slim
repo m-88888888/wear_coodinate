@@ -1,17 +1,16 @@
-/  nav.navbar.navbar-expand-lg.navbar-light.bg-light 
-header.navbar.navbar-fixed-top.navbar-inverse
-    / .navbar-brand
-    .container
-        = link_to 'WEAR_COODINATE', articles_path, id: "logo"
-        nav
-            ul.nav.navbar-nav.navbar-right
-                li 
-                    = link_to 'トップ', root_path 
-                - if user_signed_in?
-                    li
-                        = 'ユーザー'
-                    li    
-                        = link_to 'ログアウト', destroy_user_session_path, method: :delete
-                - else
-                    li
-                        = link_to 'ログイン', new_user_session_path
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    = link_to 'WEAR_COODINATE', articles_path, class: "navbar-brand"
+
+    .collapse.navbar-collapse#navbarNav
+        ul.navbar-nav.ml-auto
+            - if user_signed_in?
+                li.nav-item
+                    = link_to "@#{current_user.name}", '#' , class: "nav-link"
+                li.nav-item
+                    = link_to '新規登録', new_article_path, class: 'nav-link'
+                li.nav-item
+                    = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link"
+            - else
+                li.nav-item
+                    = link_to 'ログイン', new_user_session_path, class: "nav-link"
+                    

@@ -1,25 +1,27 @@
-- if article.errors.present?
-    ul#error_explanation
-        - article.errors.full_messages.each do |message|
-            li= message
+div.row.justify-content-center
 
-= form_with model: article, local: true do |f|
+    - if article.errors.present?
+        ul#error_explanation
+            - article.errors.full_messages.each do |message|
+                li= message
 
-    .field
-        = f.label :photo
-        = f.file_field :photo
-    .field
-        = f.label :comment
-        = f.text_field :comment 
+    = form_with model: article, local: true do |f|
+
+        .field
+            = f.label :photo
+            = f.file_field :photo
+        .field
+            = f.label :comment
+            = f.text_area :comment 
 
 
-    = f.nested_fields_for :gears, wrapper_tag: :div do |g|
-        = g.label :gear_image
-        = g.file_field :gear_image
-        = g.label :url
-        = g.url_field :url
-        = g.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button'
-    = f.add_nested_fields_link :gears, 'Add', class: 'btn btn-primary', role: 'button'
+        = f.nested_fields_for :gears, wrapper_tag: :div do |g|
+            = g.label :gear_image
+            = g.file_field :gear_image
+            = g.label :url
+            = g.url_field :url
+            = g.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button'
+        = f.add_nested_fields_link :gears, 'Add', class: 'btn btn-primary', role: 'button'
 
-    .actions
-        = f.submit nil, class: 'btn btn-primary'
+        .actions
+            = f.submit nil, class: 'btn btn-primary'

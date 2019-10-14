@@ -1,5 +1,7 @@
 h1 
     | 詳細
+= link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-3'
+= link_to '削除', @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
 h2
     | ユーザー
@@ -8,14 +10,15 @@ h2
 
 h2 
     | 記事
-= link_to image_tag(@article.photo.url), article_path(@article)
 = @article.comment
+= image_tag(@article.photo.thumb.url)
+= image_tag(@article.photo.url)
 
 h2
     | ギア
 
 - @gears.each do |gear|
-    = link_to image_tag gear.gear_image.to_s
+    = image_tag(gear.gear_image.url)
     p= gear.url
 
 
