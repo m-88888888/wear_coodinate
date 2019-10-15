@@ -6,13 +6,13 @@ h1
 h2
     | ユーザー
 = @article.user.name
-= image_tag @article.user.profile_image.to_s
+= image_tag @article.user.profile_image.thumb.to_s
 
 h2 
     | 記事
 = @article.comment
 = image_tag(@article.photo.thumb.url)
-= image_tag(@article.photo.url)
+= image_tag(@article.photo .url)
 
 h2
     | ギア

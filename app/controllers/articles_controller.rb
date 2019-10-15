@@ -35,6 +35,11 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     @article.user_id = current_user.id
+
+    if @article.photo.nil?
+      @article.photo = default_url
+    end
+
     if @article.update(article_params)
       redirect_to articles_path, notice: "記事を更新しました。"
     else
@@ -53,4 +58,5 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article).permit(:photo, :comment, gears_attributes:[:id, :url, :gear_image])
     end
+
 end
