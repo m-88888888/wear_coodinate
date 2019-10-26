@@ -10,7 +10,7 @@ html lang="ja"
     = javascript_include_tag 'application'
   body
     .header
-      = render 'layouts/header'
+      == render 'layouts/header'
     .main
-      = render 'layouts/flash'
-      = yield
+      == render 'layouts/flash'
+      == yield

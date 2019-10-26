@@ -1,48 +1,16 @@
 h1 通常記事一覧
 
 .container
-        .row
-            .card-group
-                - @articles.each do |article|
-                    .col-md-4
-                        .card
-                            = link_to image_tag(article.photo.thumb.to_s), article_path(article), class: "card-img-top"
-                            .card-body
-                                .row
-                                    = image_tag(article.user.profile_image.to_s)
-                                    = article.user.name
+  .row
+    .card-group
+      - @articles.each do |article|
+        .col-md-4
+          .card
+            = link_to image_tag(article.photo.thumb.to_s), article_path(article), class: "card-img-top"
+            .card-body
+              .row
+                = image_tag(article.user.profile_image.to_s)
+                = article.user.name
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class="card">
-        <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img class="card-img-top" src="https://placehold.it/400x300" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                div id="like-link-#{ article.id}"
+                  == render partial: "likes/like", locals: { article: article }

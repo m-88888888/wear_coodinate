@@ -15,4 +15,4 @@
 //= require rails-ujs
 //= require nested_form_fields
 //= require activestorage
-//= require_tree .
+//= require_tree

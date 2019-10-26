@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-
+  # ユーザー
   devise_for :users, controllers: {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
+
+  # 記事
   root 'articles#index'
   resources :articles
   resources :gears
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # いいね
+  post   '/like/:article_id' => 'likes#like',   as: 'like'
+  delete '/like/:article_id' => 'likes#unlike', as: 'unlike'
 end
