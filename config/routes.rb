@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   # ユーザー
   devise_for :users, controllers: {
     :registrations => 'users/registrations',
-    :sessions => 'users/sessions'
+    :sessions => 'users/sessions',
+    :passwords => 'users/passwords'
   }
 
   # 記事

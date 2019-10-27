@@ -5,13 +5,22 @@ h1
 
 h2
     | ユーザー
-= @article.user.name
-= image_tag @article.user.profile_image.thumb.to_s
+.media
+    = image_tag(@article.user.profile_image.thumb.to_s, class: "mr-3")
+    .media-body
+        | ユーザー名：
+        = @article.user.name
 
 h2 
     | 記事
-= @article.comment
-= image_tag(@article.photo .url)
+
+.card.mb-3
+    .row.no-gutters
+        .col-md-4.my-auto
+            = image_tag(@article.photo.url, class: "card-img")
+        .col-md-8
+            .card-body
+                = @article.comment
 
 h2
     | ギア

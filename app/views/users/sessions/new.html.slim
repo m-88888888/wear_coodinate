@@ -1,6 +1,6 @@
-div.row.justify-content-center
+.row.justify-content-center
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    h2
+    h2.devise_title
       | ログイン
     .form-group
       .field

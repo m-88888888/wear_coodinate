@@ -1,25 +1,26 @@
-div.row.justify-content-center
-
+.row.justify-content-center
     - if article.errors.present?
         ul#error_explanation
             - article.errors.full_messages.each do |message|
                 li= message
 
     = form_with model: article, local: true do |f|
-
-        .field
+        .form-group
             = f.label :photo
-            = f.file_field :photo
-        .field
+            .form-control-file
+                = f.file_field :photo
+        .form-group
             = f.label :comment
-            = f.text_area :comment 
-
+            = f.text_area :comment, class: "form-control"
 
         = f.nested_fields_for :gears, wrapper_tag: :div do |g|
-            = g.label :gear_image
-            = g.file_field :gear_image
-            = g.label :url
-            = g.url_field :url
+            .form-group
+                = g.label :gear_image
+                .form-control-file
+                    = g.file_field :gear_image
+            .form-group
+                = g.label :url
+                = g.url_field :url, class: "form-control"
             = g.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button'
         = f.add_nested_fields_link :gears, 'Add', class: 'btn btn-primary', role: 'button'
 

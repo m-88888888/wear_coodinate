@@ -1,16 +1,17 @@
-h1 通常記事一覧
+h2
+  | 通常記事一覧
 
 .container
   .row
     .card-group
       - @articles.each do |article|
         .col-md-4
-          .card
-            = link_to image_tag(article.photo.thumb.to_s), article_path(article), class: "card-img-top"
+          .card style="width: max-width: 25rem;" 
+            = link_to image_tag(article.photo.thumb.to_s), article_path(article), class: "card-img-top" 
             .card-body
-              .row
-                = image_tag(article.user.profile_image.to_s)
-                = article.user.name
-
-                div id="like-link-#{ article.id}"
-                  == render partial: "likes/like", locals: { article: article }
+              .media
+                = image_tag(article.user.profile_image.to_s, class: "mr-3", size: "")
+                .media-body
+                  = link_to article.user.name, '#'
+                  div id="like-link-#{ article.id}"
+                    == render partial: "likes/like", locals: { article: article }
