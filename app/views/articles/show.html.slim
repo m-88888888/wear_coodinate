@@ -25,8 +25,17 @@ h2
 h2
     | ギア
 
-- @gears.each do |gear|
-    = image_tag(gear.gear_image.url)
-    p= gear.url
-
+.card-group
+    .col-md-4
+        .card 
+            - @gears.each do |gear|
+                = image_tag(gear.gear_image.url, class: "card-img-top")
+                .card-body
+                .media
+                    .media-body
+                        p = gear.name
+                        p = gear.brand
+                        p = gear.kind
+                        p = gear.model_year
+                        p = gear.url
 

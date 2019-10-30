@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit(:photo, :comment, gears_attributes:[:id, :url, :gear_image])
+      params.require(:article).permit(:photo, :comment, gears_attributes:[:id, :url, :gear_image, :name, :brand, :kind, :model_year])
     end
 
 end

@@ -19,6 +19,22 @@
                 .form-control-file
                     = g.file_field :gear_image
             .form-group
+                = g.label :name
+                .form-control-file
+                    = g.text_field :name
+            .form-group
+                = g.label :brand
+                .form-control-file
+                    = g.text_field :brand
+            .form-group
+                = g.label :kind
+                .form-control-file
+                    = g.text_field :kind
+            .form-group
+                = g.label :model_year
+                .form-control-file
+                    = g.text_field :model_year
+            .form-group
                 = g.label :url
                 = g.url_field :url, class: "form-control"
             = g.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button'
