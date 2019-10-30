@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     :passwords => 'users/passwords'
   }
+  resources :users, only: [:show, :index]
 
   # 記事
   root 'articles#index'

@@ -1,20 +1,25 @@
 .row.justify-content-center
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    h2.devise_title
-      | ログイン
-    .form-group
-      .field
-        = f.label :email
-        br
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg"
-      .field
-        = f.label :password
-        br
-        = f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg"
-      - if devise_mapping.rememberable?
+  .col-md-4
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      h2.devise_title
+        | ログイン
+      .form-group
         .field
-          = f.check_box :remember_me
-          = f.label :remember_me
-      .actions
-        = f.submit "ログイン"
-      = render "users/shared/links"
+          = f.label :email
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg"
+        .field
+          = f.label :password
+          br
+          = f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg"
+        - if devise_mapping.rememberable?
+          .field
+            = f.check_box :remember_me
+            = f.label :remember_me
+        .actions
+          = f.submit "ログイン"
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.hidden_field :email, value: "test@test.com" 
+      = f.hidden_field :password, value: "password"
+      = f.submit "かんたんログイン"
+        = render "users/shared/links"
