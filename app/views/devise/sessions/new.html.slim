@@ -3,6 +3,9 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       h2.devise_title
         | ログイン
+      - if flash.alert
+        .notice.alert.alert-danger 
+          p = flash.alert
       .form-group
         .field
           = f.label :email
