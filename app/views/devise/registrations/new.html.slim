@@ -3,11 +3,11 @@ div.row.justify-content-center
     h1
       | ユーザー登録
     = render "devise/shared/error_messages", resource: resource
-    .field
+    .form-group
       = f.label :email
       br
-      = f.email_field :email, autofocus: true, autocomplete: "email"
-    .field
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg"
+    .form-group
       = f.label :password
       - if @minimum_password_length
         em
@@ -15,19 +15,31 @@ div.row.justify-content-center
           = @minimum_password_length
           |  characters minimum)
       br
-      = f.password_field :password, autocomplete: "new-password"
-    .field
+      = f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg"
+    .form-group
       = f.label :password_confirmation
       br
-      = f.password_field :password_confirmation, autocomplete: "new-password"
-    .field
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg"
+    .form-group
       = f.label :name
       br
-      = f.text_field :name
-    .field
+      = f.text_field :name, class: "form-control form-control-lg"
+    .form-group
       = f.label :profile_image
       br
-      = f.file_field :profile_image
+      = f.file_field :profile_image, class: "form-control-file form-control-lg"
+    .form-group
+      = f.label :gender
+      br
+      = f.radio_button :gender, 1
+      = f.label :gender, "男"
+      = f.radio_button :gender, 2
+      = f.label :gender, "女"
+    .form-group
+      = f.label :height
+      = f.select :height, height_array
+
     .actions
       = f.submit "登録"
+    
     = render "devise/shared/links"
