@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require bootstrap
 //= require nested_form_fields
 //= require activestorage
 //= require_tree
