@@ -1,4 +1,4 @@
-h1 Users#show
+h1 ユーザープロフィール
 p
     | 名前：#{@user.name}
 p
@@ -6,3 +6,19 @@ p
 p
     | プロフィール画像： 
     = image_tag(@user.profile_image.to_s)
+p #{@user.gender}
+p #{@user.height}
+
+h1 投稿した記事
+.container
+  .row
+    .card-group
+      - @articles.each do |article|
+        .col-md-4
+          .card style="width: max-width: 25rem;" 
+            = link_to image_tag(article.photo.thumb.to_s), article_path(article), class: "card-img-top" 
+            .card-body
+              .media
+                = image_tag(article.user.profile_image.to_s, class: "mr-3", size: "")
+                .media-body
+                  = link_to article.user.name, '#'
