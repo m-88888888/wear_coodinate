@@ -34,9 +34,6 @@
                 = g.label :model_year
                 .form-control-file
                     = g.text_field :model_year
-            .form-group
-                = g.label :url
-                = g.url_field :url, class: "form-control"
             = g.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button'
         = f.add_nested_fields_link :gears, 'Add', class: 'btn btn-primary', role: 'button'
 
