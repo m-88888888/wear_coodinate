@@ -1,29 +1,28 @@
 .row.justify-content-center
-  .col-md-4
+  .col-md-5
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       h2.devise_title
         | ログイン
       - if flash.alert
         .notice.alert.alert-danger 
           p = flash.alert
+
       .form-group
-        .field
-          = f.label :email
-          br
-          = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg"
-        .field
-          = f.label :password
-          br
-          = f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg"
+        label for="inputEmail" class="sr-only"
+        = f.email_field :email, class: "form-control", id: "inputEmail", placeholder: "メールアドレス"
+        label for="inputPassword" class="sr-only"
+        = f.password_field :password, class: "form-control", id: "inputPassword", placeholder: "パスワード"
         - if devise_mapping.rememberable?
           .field
             = f.check_box :remember_me
             = f.label :remember_me
-        .submit
-          = f.submit "ログイン"
+        button.btn.btn-lg.btn-primary.btn-block
+          | ログイン
+
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = f.hidden_field :email, value: "test@test.com" 
       = f.hidden_field :password, value: "password"
-      = f.submit "かんたんログイン"
+      button.btn.btn-lg.btn-secondary.btn-block
+        | かんたんログイン
 
     = render "devise/shared/links"
