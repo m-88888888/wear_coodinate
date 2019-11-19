@@ -24,17 +24,26 @@ div.row.justify-content-center
       = f.label :name
       br
       = f.text_field :name, class: "form-control form-control-lg"
-    .form-group
-      = f.label :profile_image
-      br
-      = f.file_field :profile_image, class: "form-control-file form-control-lg"
+
+    / = render "users/image_file", {form: f, user: @user}
+
+    / .form-group
+    /   = f.label :profile_image
+    /   - if @user.profile_image?
+    /     <img id="img_prev" src="#" alt="your image" />
+    /   - else
+    /     = image_tag  "default.jpg" 
+    /   <input type='file' onchange="readURL(this);" />
+    
     .form-group
       = f.label :gender
       br
-      = f.radio_button :gender, 1
-      = f.label :gender, "男"
-      = f.radio_button :gender, 2
-      = f.label :gender, "女"
+      label 
+        | 男
+        = f.radio_button :gender, 1
+      label 
+        | 女
+        = f.radio_button :gender, 2
     .form-group
       = f.label :height
       = f.select :height, height_array
