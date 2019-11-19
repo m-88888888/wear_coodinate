@@ -10,7 +10,6 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                         | @#{current_user.name}
                     .dropdown-menu
                         = link_to "ユーザー詳細", user_path(id: current_user.id), class: "dropdown-item"
-                        = link_to "ユーザー一覧", users_path, class: "dropdown-item"
                         = link_to "ユーザー編集", edit_user_registration_path, class: "dropdown-item"
               
                 li.nav-item
