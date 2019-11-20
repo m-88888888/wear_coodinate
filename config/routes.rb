@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions',
     :passwords => 'users/passwords'
   }
-  resources :users, only: [:show, :index]
+  resources :users, only: [:show, :edit, :update] do
+    # collection do
+    #   patch 'update_password'
+    # end
+  end
 
   # 記事
   root 'articles#index'

@@ -1,24 +1,40 @@
 h1 ユーザープロフィール
-p
-    | 名前：#{@user.name}
-p
-    | メールアドレス： #{@user.email}
-p
-    | プロフィール画像： 
-    = image_tag(@user.profile_image.to_s)
-p #{@user.gender}
-p #{@user.height}
+ul.media-list
+  li.media
+    .media-left
+      .circle-image
+        - if @user.profile_image?
+          = image_tag(@user.profile_image.to_s, class: "mr-3")
+        - else
+          = image_tag("default.jpg", class: "mr-3")
+    .media-body
+      h4.media-heading
+        = @user.name
+      - if @user.gender == 1
+        | MEN
+      - else
+        | WOMEN
+      |  | #{@user.height}cm 
 
 h1 投稿した記事
 .container
-  .row
-    .card-group
-      - @articles.each do |article|
-        .col-md-4
-          .card style="width: max-width: 25rem;" 
-            = link_to image_tag(article.photo.thumb.to_s), article_path(article), class: "card-img-top" 
-            .card-body
-              .media
-                = image_tag(article.user.profile_image.to_s, class: "mr-3", size: "")
-                .media-body
-                  = link_to article.user.name, '#'
+  - @articles.each do |article|
+    .card.mb-3
+      .row.no-gutters
+        .col-md-4.border
+              = link_to article_path(article), class: "card-img" do
+                - image_tag(article.photo.thumb.url)
+        .col-md-8
+          .card-body
+            h5.card-title
+              | コメント
+            p.card-text
+              = article.comment
+            p.card-text
+              small.text-muted
+                | いいね　♡
+                = article.likes.count
+            p.card-text
+              small.text-muted
+                | 最終更新時刻：
+                = article.updated_at.strftime("%Y-%m-%d %H:%M")

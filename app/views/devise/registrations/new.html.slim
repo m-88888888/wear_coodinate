@@ -1,54 +1,45 @@
 div.row.justify-content-center
-  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    h1
-      | ユーザー登録
-    = render "devise/shared/error_messages", resource: resource
-    .form-group
-      = f.label :email
-      br
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg"
-    .form-group
-      = f.label :password
-      - if @minimum_password_length
-        em
-          | (
-          = @minimum_password_length
-          |  characters minimum)
-      br
-      = f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg"
-    .form-group
-      = f.label :password_confirmation
-      br
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg"
-    .form-group
-      = f.label :name
-      br
-      = f.text_field :name, class: "form-control form-control-lg"
+  .col-md-5
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      h1
+        | ユーザー登録
+      = render "devise/shared/error_messages", resource: resource
+      .form-group
+        = f.label :email
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-lg"
+      .form-group
+        = f.label :password
+        - if @minimum_password_length
+          em
+            | (
+            = @minimum_password_length
+            |  characters minimum)
+        br
+        = f.password_field :password, autocomplete: "new-password", class: "form-control form-control-lg"
+      .form-group
+        = f.label :password_confirmation
+        br
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control form-control-lg"
+      .form-group
+        = f.label :name
+        br
+        = f.text_field :name, class: "form-control form-control-lg"
+      
+      .form-group
+          = f.label :gender
+          br
+          .custom-control.custom-radio.custom-control-inline
+            = f.radio_button :gender, 1, class: "custom-control-input", id: 'men'
+            = f.label :gender, 'MEN', class: "custom-control-label", for: 'men'
+          .custom-control.custom-radio.custom-control-inline
+            = f.radio_button :gender, 2, class: "custom-control-input", id: 'women'
+            = f.label :gender, 'WOMEN', class: "custom-control-label", for: 'women'
+      .form-group
+        = f.label :height
+        = f.select :height, height_array, {}, class: "custom-select"
 
-    / = render "users/image_file", {form: f, user: @user}
-
-    / .form-group
-    /   = f.label :profile_image
-    /   - if @user.profile_image?
-    /     <img id="img_prev" src="#" alt="your image" />
-    /   - else
-    /     = image_tag  "default.jpg" 
-    /   <input type='file' onchange="readURL(this);" />
-    
-    .form-group
-      = f.label :gender
-      br
-      label 
-        | 男
-        = f.radio_button :gender, 1
-      label 
-        | 女
-        = f.radio_button :gender, 2
-    .form-group
-      = f.label :height
-      = f.select :height, height_array
-
-    .actions
-      = f.submit "登録"
-    
-    = render "devise/shared/links"
+      button.btn.btn-lg.btn-primary.btn-block
+        | 登録
+      
+      = render "devise/shared/links"
