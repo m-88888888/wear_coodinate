@@ -23,6 +23,21 @@ RSpec.describe User, type: :model do
       expect(user.errors[:email]).to include("は既に使用されています。")
     end
 
+    # TODO メールアドレスのフォーマットを確認するテストを追加すること
+
+    # パスワードのvalidation
+    it "パスワード未入力の場合登録不可" do
+      user = build(:user, password: nil)
+      user.valid?
+      expect(user.errors[:password]).to include("が入力されていません。")
+    end
+
+    it "パスワード6文字以下の場合登録不可" do
+      user = build(:user, password: 'aaaaa')
+      user.valid?
+      expect(user.errors[:password]).to include("は6文字以上に設定して下さい。")
+    end
+
     # 名前のvalidation
     it "名前未入力の場合登録不可" do
       user = build(:user, name: nil)

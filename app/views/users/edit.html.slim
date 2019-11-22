@@ -9,21 +9,22 @@
       .form-group
         = f.label :profile_image
         br
-        = f.file_field :profile_image, class: "form-file-control"
+        = f.file_field :profile_image, class: "form-file-control", id: 'profile_image'
 
       .form-group
         = f.label :name
         br
         = f.text_field :name, class: "form-control form-control-lg"
 
+      .form-group
         = f.label :gender
         br
         .custom-control.custom-radio.custom-control-inline
-          = f.radio_button :gender, 1, class: "custom-control-input", id: 'men'
-          = f.label :gender, 'MEN', class: "custom-control-label", for: 'men'
+          = f.radio_button :gender, 1
+          = f.label :gender, 'MEN', value: "1"
         .custom-control.custom-radio.custom-control-inline
-          = f.radio_button :gender, 2, class: "custom-control-input", id: 'women'
-          = f.label :gender, 'WOMEN', class: "custom-control-label", for: 'women'
+          = f.radio_button :gender, 2
+          = f.label :gender, 'WOMEN',  value: "2"
         
       .form-group
         = f.label :height

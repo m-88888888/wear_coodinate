@@ -16,13 +16,13 @@
           .field
             = f.check_box :remember_me
             = f.label :remember_me
-        button.btn.btn-lg.btn-primary.btn-block
+        button.btn.btn-lg.btn-primary.btn-block#login
           | ログイン
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       = f.hidden_field :email, value: "test@test.com" 
       = f.hidden_field :password, value: "password"
-      button.btn.btn-lg.btn-secondary.btn-block
+      button.btn.btn-lg.btn-secondary.btn-block#test_login
         | かんたんログイン
 
     = render "devise/shared/links"
