@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
 
-  describe "create" do
+  describe "#create" do
 
     it "正常に登録できる" do
       user = create(:user)
@@ -24,6 +24,11 @@ RSpec.describe User, type: :model do
     end
 
     # TODO メールアドレスのフォーマットを確認するテストを追加すること
+    it 'メールアドレスのフォーマットが正しくなければ登録不可であること' do
+      user = build(:user, email: 'testmailatejkl')
+      user.valid?
+      expect(user.errors[:email]).to include("は有効でありません。")
+    end
 
     # パスワードのvalidation
     it "パスワード未入力の場合登録不可" do
