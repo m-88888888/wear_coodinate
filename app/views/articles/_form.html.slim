@@ -1,41 +1,57 @@
-.row.justify-content-center
-    - if article.errors.present?
-        ul#error_explanation
-            - article.errors.full_messages.each do |message|
-                li= message
-
+.container
     = form_with model: article, local: true do |f|
+        = render 'shared/flash', { object: f.object}
+
         .form-group
-            = f.label :photo
-            .form-control-file
-                = f.file_field :photo
+          .row
+            .col-4
+              = f.label :photo
+            .col-8
+              - if article.photo?
+                = image_tag(article.photo.url, id: 'img_prev')
+              - else
+                / .img_box
+                  span.ico
+                  span.txt
+                      | NO IMAGE
+                = image_tag('nofile.jpg', id: 'img_prev')
+
+              = f.file_field :photo, class: "form-contro-file"
         .form-group
             = f.label :comment
             = f.text_area :comment, class: "form-control"
 
+        .row
+          .col-10
+            h2 
+              | アイテム詳細
+
         = f.nested_fields_for :gears, wrapper_tag: :div do |g|
-            .form-group
+          .row
+            .col-6
+              .form-group
                 = g.label :gear_image
-                .form-control-file
-                    = g.file_field :gear_image
-            .form-group
+                - if g.object.gear_image?
+                  = image_tag(g.object.gear_image.url, id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
+                - else
+                  = image_tag('nofile.jpg', id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
+                = g.file_field :gear_image, class: "form-contro-file", onChange: "imgPreView(event, 'preview__nested_field_for_replace_with_index__')"
+            .col-6
+              .form-group
                 = g.label :name
-                .form-control-file
-                    = g.text_field :name
-            .form-group
+                = g.text_field :name, class: "form-control"
+              .form-group
                 = g.label :brand
-                .form-control-file
-                    = g.text_field :brand
-            .form-group
+                = g.text_field :brand, class: "form-control"
+              .form-group
                 = g.label :kind
-                .form-control-file
-                    = g.text_field :kind
-            .form-group
+                = g.select :kind, gear_type_list, { include_blank: true }, class: "form-control"
+              .form-group
                 = g.label :model_year
-                .form-control-file
-                    = g.text_field :model_year
-            = g.remove_nested_fields_link 'Delete', class: 'btn btn-danger', role: 'button'
-        = f.add_nested_fields_link :gears, 'Add', class: 'btn btn-primary', role: 'button'
+                = g.text_field :model_year, class: "form-control"
+              = g.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button'
+        = f.add_nested_fields_link :gears, '＋', class: 'btn btn-primary', role: 'button', id: 'add-form'
 
         .actions
-            = f.submit nil, class: 'btn btn-primary'
+          = f.submit nil, class: 'btn btn-primary'
+

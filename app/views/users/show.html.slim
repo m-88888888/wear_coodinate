@@ -1,12 +1,8 @@
 h1 ユーザープロフィール
-ul.media-list
-  li.media
+.media-list
+  .media
     .media-left
-      .circle-image
-        - if @user.profile_image?
-          = image_tag(@user.profile_image.to_s, class: "mr-3")
-        - else
-          = image_tag("default.jpg", class: "mr-3")
+      = render 'shared/profile_image', user: @user
     .media-body
       h4.media-heading
         = @user.name

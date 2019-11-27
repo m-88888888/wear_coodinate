@@ -46,7 +46,7 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
-  def default_url
-    "default (1).jpg"
-  end
+  # def default_url
+  #   "default (1).jpg"
+  # end
 end

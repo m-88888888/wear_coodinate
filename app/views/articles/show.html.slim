@@ -6,11 +6,16 @@ h1
 h2
     | ユーザー
 .media
-    = image_tag(@article.user.profile_image.thumb.to_s, class: "mr-3")
+    .media-left
+      = render 'shared/profile_image', user: @article.user
     .media-body
-        | ユーザー名：
+      h4.media-heading
         = @article.user.name
-
+      - if @article.user.gender == 1
+        | MEN
+      - else
+        | WOMEN
+      |  | #{@article.user.height}cm 
 h2 
     | 記事
 
@@ -23,9 +28,9 @@ h2
                 = @article.comment
 
 h2
-    | ギア
+    | 着用アイテム
 
-.card-group
+/ .card-group
     .col-md-4
         .card 
             - @gears.each do |gear|
@@ -37,4 +42,23 @@ h2
                         p = gear.brand
                         p = gear.kind
                         p = gear.model_year
+
+.container
+  - @gears.each do |gear|
+    .card.mb-3
+      .row.no-gutters
+        .col-md-4.border
+            = image_tag(gear.gear_image.to_s, class: "card-img")
+        .col-md-8
+          .card-body
+            h5.card-title
+              | Item Information
+            p.card-text
+                = gear.name
+            p.card-text
+                = gear.brand
+            p.card-text
+                = gear.kind
+            p.card-text
+                = gear.model_year
 
