@@ -8,7 +8,6 @@ class Article < ApplicationRecord
   has_many :likes, dependent: :destroy
   # has_many :liking_users, through: :likes, source: :user
 
-
-  validates :photo, presence: { message: "画像をアップロードしてください。" }
-  validates :comment, presence: { message: "コメントを記入してください。" } , length: { maximum: 100}
+  validates :photo, presence: true
+  validates :comment, presence: true, length: { maximum: 200}
 end

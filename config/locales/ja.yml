@@ -225,15 +225,21 @@ ja:
         profile_image: プロフィール画像
         gender: 性別
         height: 身長
-      # ギア
-      gear:
-        gear_image: ギア画像
-        name: ギア名
-        kind: 種類
-        brand: ブランド
-        model_year: モデルイヤー
       # 投稿記事
       article:
-        photo: 写真
-        comment: コメント
+        photo: コーディネート画像
+        comment: コーディネート紹介文
         likes_count: いいね数
+      # ギア
+      gears:
+        gear_image: アイテム画像
+        name: アイテム名
+        kind: 種類
+        brand: ブランド
+        model_year: モデル年式
+      gear:
+        gear_image: アイテム画像
+        name: アイテム名
+        kind: 種類
+        brand: ブランド
+        model_year: モデル年式
