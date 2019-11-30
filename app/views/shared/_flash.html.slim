@@ -1,0 +1,4 @@
+- if object.errors.any?
+  .notice.alert.alert-danger
+    - object.errors.full_messages.each do |msg|
+      li = msg
