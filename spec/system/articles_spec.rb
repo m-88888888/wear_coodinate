@@ -40,11 +40,45 @@ RSpec.describe '記事管理機能', :type => :system do
 
     it 'アイテム詳細の入力フォームをへらすことができる', js: true do
       visit new_article_path
-      # click_on 'add-form'
       click_on '削除'
       expect(page).not_to have_css('#article_gears_attributes_0_name')
     end
-
   end
 
+  describe '記事編集・削除機能' do
+    it '投稿した記事を編集できる', js: true do
+      @article = create(:article)
+      visit root_path
+      click_on 'thmb'
+      click_on '編集'
+      attach_file 'article_gears_attributes_0_gear_image', "#{Rails.root}/app/assets/images/default.jpg"
+      fill_in 'article_gears_attributes_0_name', with: 'hoge'
+      fill_in 'article_gears_attributes_0_brand', with: 'hoge'
+      select 'ヘルメット', from: 'article_gears_attributes_0_kind'
+      fill_in 'article_gears_attributes_0_model_year', with: '2001'
+      click_on '更新する'
+      expect(page).to have_text('記事を更新しました。')
+    end
+    
+    it '投稿した記事を削除できる', js: true do
+      @article = create(:article)
+      visit root_path
+      click_on 'thmb'
+      click_on '削除'
+      page.accept_confirm
+      expect(page).to have_text('記事を削除しました。')
+    end
+  end
+  
+  describe '正しいユーザー以外は編集・削除できない' do
+    it '他ユーザーの記事は編集・削除できない' do
+      @user = create(:test_user)
+      login_as(@user)
+      @article = create(:other_article)
+      visit root_path
+      click_on 'thmb'
+      expect(page).not_to eq('編集')
+      expect(page).not_to eq('削除')
+    end
+  end
 end

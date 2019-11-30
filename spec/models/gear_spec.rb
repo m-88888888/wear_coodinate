@@ -4,6 +4,10 @@ RSpec.describe Gear, type: :model do
   
   describe '#create' do
 
+  before do
+    @user = create(:user)
+  end
+
     it '名前、ブランド、種類、モデル年式があれば有効な状態であること' do
       gear = create(:gear)
       gear.valid?

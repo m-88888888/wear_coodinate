@@ -4,6 +4,6 @@ FactoryBot.define do
     kind { 'ヘルメット' }
     brand { 'テストブランド' }
     model_year { 2019 }
-    article
+    association :article
   end
 end
