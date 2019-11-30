@@ -58,4 +58,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Indent html for pretty debugging and do not sort attributes
+  Slim::Engine.set_options pretty: true, sort_attrs: false
+  Slim::Engine.options[:pretty] = true
 end

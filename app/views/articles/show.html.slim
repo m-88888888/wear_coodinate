@@ -1,7 +1,8 @@
 h1 
     | 詳細
-= link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-3'
-= link_to '削除', @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'
+- if current_user.id == @article.user.id
+  = link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-3'
+  = link_to '削除', @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
 h2
     | ユーザー
@@ -15,7 +16,7 @@ h2
         | MEN
       - else
         | WOMEN
-      |  | #{@article.user.height}cm 
+      |  | #{@article.user.height} cm 
 h2 
     | 記事
 
@@ -30,19 +31,6 @@ h2
 h2
     | 着用アイテム
 
-/ .card-group
-    .col-md-4
-        .card 
-            - @gears.each do |gear|
-                = image_tag(gear.gear_image.url, class: "card-img-top")
-                .card-body
-                .media
-                    .media-body
-                        p = gear.name
-                        p = gear.brand
-                        p = gear.kind
-                        p = gear.model_year
-
 .container
   - @gears.each do |gear|
     .card.mb-3
@@ -51,14 +39,16 @@ h2
             = image_tag(gear.gear_image.to_s, class: "card-img")
         .col-md-8
           .card-body
-            h5.card-title
-              | Item Information
             p.card-text
-                = gear.name
+              | アイテム名：
+              = gear.name
             p.card-text
-                = gear.brand
+              | ブランド：
+              = gear.brand
             p.card-text
-                = gear.kind
+              | 種類：
+              = gear.kind
             p.card-text
-                = gear.model_year
+              | モデル年式：
+              = gear.model_year
 
