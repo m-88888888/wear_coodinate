@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # 記事
   root 'articles#index'
   resources :articles
+  get "/articles/gender/:gender", to: "articles#index", as: 'gender_index'
   resources :gears
 
   # いいね

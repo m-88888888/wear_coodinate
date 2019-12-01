@@ -3,7 +3,11 @@ class ArticlesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    if params[:gender].present?
+      @articles = Article.joins(:user).where('gender = ?', params[:gender])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
@@ -53,6 +57,16 @@ class ArticlesController < ApplicationController
     article.destroy
     redirect_to articles_path, notice: "記事を削除しました。"
   end
+
+  # def gender_switching
+  #   # @user = User.left_joins(:articles).select("users.*, articles.*").where(gender: params[id:])
+  #   if params[:gender] = 'MEN'
+  #     # @articles = Article.select('articles.*').joins(:user).where('gender = ?', params[:gender])
+  #     @articles = Article.select('articles.*').joins(:user).where('gender = 1')
+  #   else
+  #     @articles = Article.select('articles.*').joins(:user).where('gender = 2')
+  #   end
+  # end
 
   private
 
