@@ -1,10 +1,13 @@
-h2
-  | 通常記事一覧
+h2 class="text-center"
+  | コーディネート
 
-
-= link_to  "MEN", gender_index_path(gender: 1)
-p
-= link_to  "WOMEN", gender_index_path(gender: 2)
+ul.nav.nav-pills.nav-justified#pills-tab role='tablist'
+  li.nav-item.
+    = link_to  "ALL", root_path, class: 'nav-link nav-item'
+  li.nav-item
+    = link_to  "MEN", gender_index_articles_path(gender: 1), class: 'nav-link nav-item'
+  li.nav-item
+    = link_to  "WOMEN", gender_index_articles_path(gender: 2), class: 'nav-link nav-item'
 
 - if @articles.present?
   .container
