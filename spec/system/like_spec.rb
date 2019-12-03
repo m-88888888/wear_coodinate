@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe 'いいね機能', :type => :system do
-  it '投稿をいいね／いいね解除する', js: true do
+  before do
     user = create(:user)
     article = create(:article)
+    login_as(user)
+  end
 
-    # ログインする
-    visit new_user_session_path
-    click_on('test_login')
-    expect(page).to have_text("ログインしました。")
+  it '投稿をいいね／いいね解除する', js: true do
+    visit root_path
 
     # いいねボタンがあることを確認
     expect(find('.iine_button')).to have_content '♡0'

@@ -72,13 +72,13 @@ RSpec.describe '記事管理機能', :type => :system do
   
   describe '正しいユーザー以外は編集・削除できない' do
     it '他ユーザーの記事は編集・削除できない' do
-      @user = create(:test_user)
-      login_as(@user)
-      @article = create(:other_article)
+      create(:men_user)
+      create(:other_article)
       visit root_path
       click_on 'thmb'
       expect(page).not_to eq('編集')
       expect(page).not_to eq('削除')
     end
   end
+  
 end

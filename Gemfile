@@ -43,8 +43,6 @@ group :development, :test do
   #　追加
   gem 'rspec-rails' 
   gem 'factory_bot_rails'
-  gem 'rubocop', require: false
-  gem 'onkcop', require: false
 end
 
 group :development do
@@ -56,6 +54,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # 追加
   gem 'rails-flog', :require => "flog"
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'faker'
 end
 
 group :test do
