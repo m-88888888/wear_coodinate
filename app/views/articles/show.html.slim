@@ -1,6 +1,6 @@
 h1 
     | 詳細
-- if current_user.id == @article.user.id
+- if user_signed_in? && current_user.id == @article.user.id
   = link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-3'
   = link_to '削除', @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
