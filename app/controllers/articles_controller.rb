@@ -58,21 +58,27 @@ class ArticlesController < ApplicationController
     redirect_to articles_path, notice: "記事を削除しました。"
   end
 
-  # def gender_switching
-  #   # @user = User.left_joins(:articles).select("users.*, articles.*").where(gender: params[id:])
-  #   if params[:gender] = 'MEN'
-  #     # @articles = Article.select('articles.*').joins(:user).where('gender = ?', params[:gender])
-  #     @articles = Article.select('articles.*').joins(:user).where('gender = 1')
-  #   else
-  #     @articles = Article.select('articles.*').joins(:user).where('gender = 2')
-  #   end
-  # end
+  def rank
+    @articles = Article.find(Like.group(:article_id).order('count(article_id) desc').pluck(:article_id))
+  end
+
 
   private
 
     def article_params
-      params.require(:article).permit(:photo, :comment, gears_attributes:[:id, :gear_image, :name, :brand, :kind, :model_year, :_destroy])
-    end
+      params.require(:article).permit(
+                                      :photo,
+                                      :comment,
+                                        gears_attributes:[
+                                                          :id,
+                                                          :gear_image,
+                                                          :name,
+                                                          :brand,
+                                                          :kind,
+                                                          :model_year,
+                                                          :_destroy]
+                                      )
+        end
 
     def correct_user
       @article = current_user.articles.find_by(id: params[:id])

@@ -13,8 +13,10 @@ Rails.application.routes.draw do
 
   # 記事
   root 'articles#index'
-  resources :articles
-  get "/articles/gender/:gender", to: "articles#index", as: 'gender_index'
+  resources :articles do
+    get "rank", on: :collection
+    get "/gender/:gender", to: "articles#index", as: 'gender_index', on: :collection
+  end
   resources :gears
 
   # いいね
