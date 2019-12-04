@@ -1,0 +1,40 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.images_div{
+  margin: 10px 0 0 0;
+  display: flex;
+  .image1,.image2{
+    margin: 0 10px 0 0;
+    width:40%;
+    .file_div{
+      cursor: pointer;
+      cursor: hand;
+      margin:0 auto 0;
+      width:150px;
+      height: 150px;
+      @media(min-width:769px){
+        &:hover{
+          opacity: 0.7;
+        }  
+      }
+      img{
+        max-width: 150px;
+        max-height: 150px;
+        width: auto;
+        height: auto;
+      }
+    }
+    .file1,.file2{
+      display: none;
+    }
+    .remove_img_div{
+      width:100px;
+      margin:10px auto 0;
+      .check_box{
+        margin:0 5px 0 0;
+      }
+    }
+  }
+}

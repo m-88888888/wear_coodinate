@@ -1,0 +1,24 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    = link_to 'WEAR_COODINATE', articles_path, class: "navbar-brand"
+
+    .collapse.navbar-collapse#navbarNav
+        ul.navbar-nav.ml-auto
+            - if user_signed_in?
+                li.nav-item
+                    = link_to '人気コーデ', rank_articles_path, class: 'nav-link'
+                li.nav-item
+                    = link_to '投稿', new_article_path, class: 'nav-link'
+                li.nav-item.dropdown
+                    / = link_to "#", user_path(id: current_user.id), class: "nav-link dropdown-toggle", data: { toggle: 'dropdown' }
+                    a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        | @#{current_user.name}
+                    .dropdown-menu
+                        = link_to "ユーザー詳細", user_path(id: current_user.id), class: "dropdown-item"
+                        = link_to "ユーザー編集", edit_user_path(current_user.id), class: "dropdown-item"
+                        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item"
+            - else
+                li.nav-item
+                    = link_to 'ログイン', new_user_session_path, class: "nav-link"
+                li.nav-item
+                    = link_to 'ユーザー登録', new_user_registration_path, class: "nav-link"
+                    

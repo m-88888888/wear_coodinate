@@ -1,0 +1,54 @@
+h1 
+    | 詳細
+- if user_signed_in? && current_user.id == @article.user.id
+  = link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-3'
+  = link_to '削除', @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'
+
+h2
+    | ユーザー
+.media
+    .media-left
+      = render 'shared/profile_image', user: @article.user
+    .media-body
+      h4.media-heading
+        = @article.user.name
+      - if @article.user.gender == 1
+        | MEN
+      - else
+        | WOMEN
+      |  | #{@article.user.height} cm 
+h2 
+    | 記事
+
+.card.mb-3
+    .row.no-gutters
+        .col-md-4.my-auto
+            = image_tag(@article.photo.url, class: "card-img")
+        .col-md-8
+            .card-body
+                = @article.comment
+
+h2
+    | 着用アイテム
+
+.container
+  - @gears.each do |gear|
+    .card.mb-3
+      .row.no-gutters
+        .col-md-4.border
+            = image_tag(gear.gear_image.to_s, class: "card-img")
+        .col-md-8
+          .card-body
+            p.card-text
+              | アイテム名：
+              = gear.name
+            p.card-text
+              | ブランド：
+              = gear.brand
+            p.card-text
+              | 種類：
+              = gear.kind
+            p.card-text
+              | モデル年式：
+              = gear.model_year
+

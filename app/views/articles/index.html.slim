@@ -1,0 +1,36 @@
+h2 class="text-center"
+  | コーディネート
+
+ul.nav.nav-pills.nav-justified#pills-tab role='tablist'
+  li.nav-item.
+    = link_to  "ALL", root_path, class: 'nav-link nav-item'
+  li.nav-item
+    = link_to  "MEN", gender_index_articles_path(gender: 1), class: 'nav-link nav-item'
+  li.nav-item
+    = link_to  "WOMEN", gender_index_articles_path(gender: 2), class: 'nav-link nav-item'
+
+- if @articles.present?
+  .container
+    .row
+      .card-group
+          - @articles.each do |article|
+            .col-md-4
+              .card.mb-4
+                = link_to image_tag(article.photo.thumb.url, width: "100%", height: "100%"), article_path(article), class: "card-img-top", id: "thmb"
+                .card-body
+                  .media
+                    .circle-image
+                      - if article.user.profile_image?
+                        = image_tag(article.user.profile_image.to_s, class: "mr-3")
+                      - else
+                        = image_tag("default.jpg", class: "mr-3")
+                    .media-body
+                      = link_to article.user.name, user_path(article.user.id)
+                      div id="like-link-#{ article.id}"
+                        == render partial: "likes/like", locals: { article: article }
+                      p.card-text
+                        small.text-muted
+                          | 登録日時：
+                          = article.created_at.strftime("%Y-%m-%d %H:%M")
+- else
+  h1 投稿された記事が見つかりません。
