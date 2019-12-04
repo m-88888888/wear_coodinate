@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :gear do
+    article_id { 1 }
     name { 'アイテム名' }
     kind { 'ヘルメット' }
     brand { 'テストブランド' }
