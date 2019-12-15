@@ -1,2 +1,33 @@
-h1 Gears#index
-p Find me in app/views/gears/index.html.slim
+h2 class="text-center"
+  | アイテム一覧
+
+= form_with url: search_gears_path, method: :get, local: true do |f|
+  = f.text_field :search
+  = f.submit '検索'
+
+p アイテム名を入力して、コーディネートを検索することができます。
+
+.container
+  - @gears.each do |gear|
+    .card.mb-3
+      .row.no-gutters
+        .col-md-4.border
+            = image_tag(gear.gear_image.url, class: "card-img")
+        .col-md-8
+          .card-body
+            p.card-text
+              | アイテム名：
+              = gear.name
+            p.card-text
+              | ブランド：
+              = gear.brand
+            p.card-text
+              | 種類：
+              = gear.kind
+            p.card-text
+              | モデル年式：
+              = gear.model_year
+            = form_with url: search_gears_path, method: :get, local: true do |f|
+              = f.hidden_field :search, :value => "#{gear.name}"
+              = f.submit 'このアイテムを使ったコーデを検索'
+

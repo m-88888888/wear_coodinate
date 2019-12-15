@@ -4,6 +4,8 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .collapse.navbar-collapse#navbarNav
         ul.navbar-nav.ml-auto
             - if user_signed_in?
+                li.nav-itme
+                    = link_to 'アイテムリスト', gears_path, class: 'nav-link'
                 li.nav-item
                     = link_to '人気コーデ', rank_articles_path, class: 'nav-link'
                 li.nav-item

@@ -17,7 +17,11 @@ Rails.application.routes.draw do
     get "rank", on: :collection
     get "/gender/:gender", to: "articles#index", as: 'gender_index', on: :collection
   end
-  resources :gears
+
+  #アイテム
+  resources :gears, only: [ :index ] do
+    get "/search", to: "gears#search", as: 'search', on: :collection
+  end
 
   # いいね
   post   '/like/:article_id' => 'likes#like',   as: 'like'

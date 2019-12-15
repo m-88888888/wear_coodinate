@@ -12,6 +12,7 @@ FactoryBot.define do
   end
 
   factory :other_article, class: Article do
+    id { 2 }
     photo { File.new("#{Rails.root}/spec/fixtures/nofile.jpg") }
     comment { "テストコメント" }
     user_id { 2 }

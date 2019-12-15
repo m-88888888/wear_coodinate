@@ -5,5 +5,7 @@ class Gear < ApplicationRecord
   validates :name, presence: true, length: { maximum: 30 }
   validates :brand, presence: true
   validates :kind, presence: true
-  validates :model_year, presence: true, format: { with: /\A20\d{2}/, message: 'は「20XX」の形式で入力してください。' }
+  validates :model_year, presence: true, 
+                         format: { with: /\A20\d{2}/, message: 'は「20XX」の形式で入力してください。' }
+
 end
