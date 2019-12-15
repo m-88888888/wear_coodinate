@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   belongs_to :user
-  has_many :gears
+  has_many :gears, foreign_key: :article_id, primary_key: :id, inverse_of: :article
   accepts_nested_attributes_for :gears, allow_destroy: true
   default_scope -> { order(created_at: :desc) }
 
