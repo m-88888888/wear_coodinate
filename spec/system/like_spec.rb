@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'いいね機能', :type => :system do
   before do
     user = create(:user)
-    article = create(:article)
+    article = create(:article, user: user)
     login_as(user)
   end
 

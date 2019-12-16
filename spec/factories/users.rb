@@ -19,7 +19,6 @@
 FactoryBot.define do
 
   factory :user do
-    # id { 1 }
     email { 'test@test.com'}
     password { 'password' }
     password_confirmation { 'password'}
@@ -29,7 +28,6 @@ FactoryBot.define do
   end
 
   factory :men_user, class: User do
-    # id { 2 }
     email { 'test@test.com1'}
     password { 'password' }
     password_confirmation { 'password'}
@@ -39,7 +37,6 @@ FactoryBot.define do
   end
 
   factory :women_user, class: User do
-    # id { 3 }
     email { Faker::Internet.free_email }
     password { 'password' }
     password_confirmation { 'password'}
@@ -47,5 +44,4 @@ FactoryBot.define do
     gender { 2 }
     height { 200 }
   end
-
 end

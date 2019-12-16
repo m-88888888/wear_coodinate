@@ -47,7 +47,7 @@ RSpec.describe '記事管理機能', :type => :system do
 
   describe '記事編集・削除機能' do
     it '投稿した記事を編集できる', js: true do
-      @article = create(:article)
+      @article = create(:article, user: @user)
       visit root_path
       click_on 'thmb'
       click_on '編集'
@@ -61,7 +61,7 @@ RSpec.describe '記事管理機能', :type => :system do
     end
     
     it '投稿した記事を削除できる', js: true do
-      @article = create(:article)
+      @article = create(:article, user: @user)
       visit root_path
       click_on 'thmb'
       click_on '削除'
@@ -73,7 +73,7 @@ RSpec.describe '記事管理機能', :type => :system do
   describe '正しいユーザー以外は編集・削除できない' do
     it '他ユーザーの記事は編集・削除できない' do
       create(:men_user)
-      create(:other_article)
+      create(:other_article, user: @user)
       visit root_path
       click_on 'thmb'
       expect(page).not_to eq('編集')

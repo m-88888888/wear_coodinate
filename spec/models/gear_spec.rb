@@ -21,10 +21,11 @@ RSpec.describe Gear, type: :model do
 
   before do
     @user = create(:user)
+    @article = create(:article, user: @user)
   end
 
     it '名前、ブランド、種類、モデル年式があれば有効な状態であること' do
-      gear = create(:gear)
+      gear = create(:gear, article: @article)
       gear.valid?
       expect(gear).to  be_valid
     end

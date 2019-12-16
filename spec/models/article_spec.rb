@@ -21,7 +21,7 @@ RSpec.describe Article, type: :model do
 
   describe "#create" do
     it 'コーディネート画像、コーディネート紹介文があれば有効な状態であること' do
-      article = create(:article)
+      article = create(:article, user: @user)
       article.valid?
       expect(article).to be_valid
     end

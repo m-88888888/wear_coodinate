@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'アイテムリスト', :type => :system do
   before do
     @user = create(:user)
-    @article = create(:article)
-    @gear = create(:gear)
+    @article = create(:article, user: @user)
+    @gear = create(:gear, article: @article)
     login_as(@user)
     visit gears_path
   end
