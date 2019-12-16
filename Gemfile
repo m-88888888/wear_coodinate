@@ -56,7 +56,7 @@ group :development do
   gem 'rails-flog', :require => "flog"
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'faker'
+  gem 'annotate'
 end
 
 group :test do
