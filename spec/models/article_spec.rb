@@ -15,13 +15,11 @@ require 'rails_helper'
 
 RSpec.describe Article, type: :model do
 
-  before do
-    @user = create(:user)
-  end
+  let(:user) { create(:user) }
 
-  describe "#create" do
+  describe 'validationのテスト' do
     it 'コーディネート画像、コーディネート紹介文があれば有効な状態であること' do
-      article = create(:article, user: @user)
+      article = create(:article, user: user)
       article.valid?
       expect(article).to be_valid
     end

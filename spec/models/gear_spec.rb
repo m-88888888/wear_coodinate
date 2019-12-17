@@ -17,15 +17,11 @@ require 'rails_helper'
 
 RSpec.describe Gear, type: :model do
   
-  describe '#create' do
+  let(:article) { create(:article) }
 
-  before do
-    @user = create(:user)
-    @article = create(:article, user: @user)
-  end
-
+  describe 'validationのテスト' do
     it '名前、ブランド、種類、モデル年式があれば有効な状態であること' do
-      gear = create(:gear, article: @article)
+      gear = create(:gear, article: article)
       gear.valid?
       expect(gear).to  be_valid
     end
@@ -65,7 +61,5 @@ RSpec.describe Gear, type: :model do
       gear.valid?
       expect(gear.errors[:model_year]).to include('は「20XX」の形式で入力してください。')
     end
-    
-
   end
 end
