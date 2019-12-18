@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id          :bigint           not null, primary key
+#  photo       :string(255)
+#  comment     :text(65535)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :integer          not null
+#  likes_count :integer
+#
+
 class Article < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   belongs_to :user

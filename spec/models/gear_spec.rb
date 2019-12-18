@@ -1,15 +1,27 @@
+# == Schema Information
+#
+# Table name: gears
+#
+#  id         :bigint           not null, primary key
+#  article_id :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  gear_image :string(255)
+#  name       :string(255)
+#  kind       :string(255)
+#  brand      :string(255)
+#  model_year :integer
+#
+
 require 'rails_helper'
 
 RSpec.describe Gear, type: :model do
   
-  describe '#create' do
+  let(:article) { create(:article) }
 
-  before do
-    @user = create(:user)
-  end
-
+  describe 'validationのテスト' do
     it '名前、ブランド、種類、モデル年式があれば有効な状態であること' do
-      gear = create(:gear)
+      gear = create(:gear, article: article)
       gear.valid?
       expect(gear).to  be_valid
     end
@@ -49,7 +61,5 @@ RSpec.describe Gear, type: :model do
       gear.valid?
       expect(gear.errors[:model_year]).to include('は「20XX」の形式で入力してください。')
     end
-    
-
   end
 end
