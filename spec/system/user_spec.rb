@@ -63,7 +63,6 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
       expect(page).to have_text("170cm")
       # 記事が表示されることを確認するテストを追記すること
     end
-
   end
 
 end

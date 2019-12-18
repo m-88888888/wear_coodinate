@@ -13,11 +13,11 @@ FactoryBot.define do
   factory :like do
     association :user
     association :article
+  end
 
-    trait :like2 do
-      association :user
-      association :article
-    end
+  factory :like2, class: Like do
+    association :user
+    association :article
   end
 
   factory :like3, class: Like do
