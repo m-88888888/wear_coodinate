@@ -98,3 +98,31 @@ position:relative;
 left:8px;
 bottom:2px;	
 }
+
+footer{
+  border-top: inset 1px brown;
+  height:100px;
+  width:100%;
+  margin-top:20px;
+  .container{
+    p{
+        font-size: 1.4rem;
+        padding: 0, auto;
+        text-align: center;
+
+        a{
+          font-size: 1.5rem;
+          @media(min-width:769px){
+            &:hover{
+              color:black;
+            }  
+          }
+        }  
+      }
+  }
+  .footer_bar{
+    font-size: 0.8rem;
+    margin-bottom:160px;
+    text-align: center;
+  }
+}
