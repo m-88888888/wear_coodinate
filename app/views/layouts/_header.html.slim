@@ -4,19 +4,32 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .collapse.navbar-collapse#navbarNav
         ul.navbar-nav.ml-auto
             - if user_signed_in?
-                li.nav-itme
-                    = link_to 'アイテムリスト', gears_path, class: 'nav-link'
-                li.nav-item
-                    = link_to '人気コーデ', rank_articles_path, class: 'nav-link'
-                li.nav-item
-                    = link_to '投稿', new_article_path, class: 'nav-link'
                 li.nav-item.dropdown
-                    / = link_to "#", user_path(id: current_user.id), class: "nav-link dropdown-toggle", data: { toggle: 'dropdown' }
                     a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                        | @#{current_user.name}
+                        = icon("fas", "tshirt")
+                        | コーディネート
                     .dropdown-menu
-                        = link_to "ユーザー詳細", user_path(id: current_user.id), class: "dropdown-item"
-                        = link_to "ユーザー編集", edit_user_path(current_user.id), class: "dropdown-item"
+                        = link_to 'コーディネート集', root_path, class: 'nav-link'
+                        = link_to '人気コーデ', rank_articles_path, class: 'nav-link'
+
+                li.nav-item.dropdown
+                    a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        = icon("fas", "mitten")
+                        | アイテム
+                    .dropdown-menu
+                        = link_to 'アイテムリスト', gears_path, class: 'nav-link'
+
+                li.nav-item
+                    = link_to new_article_path, class: 'nav-link' do
+                        = icon("far", "image")
+                        |  新規投稿
+
+                li.nav-item.dropdown
+                    a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        = icon("fas", "user")
+                        |  #{current_user.name}
+                    .dropdown-menu
+                        = link_to "マイページ", user_path(id: current_user.id), class: "dropdown-item"
                         = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "dropdown-item"
             - else
                 li.nav-item
