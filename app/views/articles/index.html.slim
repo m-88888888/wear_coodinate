@@ -1,13 +1,13 @@
 h2 class="text-center"
   | コーディネート
 
-ul.nav.nav-pills.nav-justified#pills-tab role='tablist'
-  li.nav-item.
-    = link_to  "ALL", root_path, class: 'nav-link nav-item'
+ul.nav.nav-tabs.nav-fill
   li.nav-item
-    = link_to  "MEN", gender_index_articles_path(gender: 1), class: 'nav-link nav-item'
+    = link_to  "ALL", root_path, class: "nav-link #{('active' if current_page?(root_path))}"
   li.nav-item
-    = link_to  "WOMEN", gender_index_articles_path(gender: 2), class: 'nav-link nav-item'
+    = link_to  "MEN", gender_index_articles_path(gender: 1), class: "nav-link #{('active' if current_page?('/articles/gender/1'))}"
+  li.nav-item
+    = link_to  "WOMEN", gender_index_articles_path(gender: 2), class: "nav-link #{('active' if current_page?('/articles/gender/2'))}"
 
 - if @articles.present?
   .container
@@ -25,12 +25,17 @@ ul.nav.nav-pills.nav-justified#pills-tab role='tablist'
                       - else
                         = image_tag("default.jpg", class: "mr-3")
                     .media-body
-                      = link_to article.user.name, user_path(article.user.id)
-                      div id="like-link-#{ article.id}"
-                        == render partial: "likes/like", locals: { article: article }
+                      / = link_to article.user.name, user_path(article.user.id)
+                      = article.user.name
                       p.card-text
                         small.text-muted
-                          | 登録日時：
-                          = article.created_at.strftime("%Y-%m-%d %H:%M")
+                          | #{article.user.height}cm
+                          / | 登録日時：
+                          / = article.created_at.strftime("%Y-%m-%d %H:%M")
+                / ul.list-group.list-group-flush
+                  li.list-group-item
+                .card-footer id="like-link-#{article.id}"
+                  == render partial: "likes/like", locals: { article: article }
+
 - else
   h1 投稿された記事が見つかりません。
