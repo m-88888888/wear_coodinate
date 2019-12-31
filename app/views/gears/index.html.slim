@@ -1,33 +1,36 @@
 h2 class="text-center"
   | アイテム一覧
 
-= form_with url: search_gears_path, method: :get, local: true do |f|
-  = f.text_field :search
-  = f.submit '検索'
+  = form_with url: search_gears_path, method: :get, local: true do |f|
+    .row.justify-content-center
+      .input-group.col-md-6
+        = f.text_field :search, placeholder: 'キーワードを入力してください', class: 'form-control'
+        = f.submit '検索', class: 'btn btn-primary'
 
-p アイテム名を入力して、コーディネートを検索することができます。
+p.text-center アイテム名を入力して、コーディネートを検索することができます。
 
 .container
-  - @gears.each do |gear|
-    .card.mb-3
-      .row.no-gutters
-        .col-md-4.border
-            = image_tag(gear.gear_image.url, class: "card-img")
-        .col-md-8
+  .row
+    - @gears.each do |gear|
+      .col-md-4
+        .card.md-4
+          = image_tag(gear.gear_image.url, class: "card-img")
           .card-body
-            p.card-text
-              | アイテム名：
-              = gear.name
-            p.card-text
-              | ブランド：
-              = gear.brand
-            p.card-text
-              | 種類：
-              = gear.kind
-            p.card-text
-              | モデル年式：
-              = gear.model_year
+            table.table
+              tbody
+                tr
+                  th アイテム名
+                  td = gear.name
+                tr
+                  th ブランド
+                  td = gear.brand
+                tr
+                  th 種類
+                  td = gear.kind
+                tr
+                  th モデル年式
+                  td = gear.model_year
+          .card-footer
             = form_with url: search_gears_path, method: :get, local: true do |f|
               = f.hidden_field :search, :value => "#{gear.name}"
-              = f.submit 'このアイテムを使ったコーデを検索'
-
+              = f.submit 'このアイテムを使ったコーデを検索', class: 'btn btn-primary'

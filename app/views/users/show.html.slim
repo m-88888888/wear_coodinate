@@ -9,17 +9,19 @@
 h3.text-center プロフィール画像
 = render 'shared/profile_image', user: @user
 
-table.table
-  tbody
-    tr
-      th ユーザー名
-      td = @user.name
-    tr
-      th 性別
-      td=(@user.gender == 1 ? 'MEN' : 'WOMEN')
-    tr
-      th 身長
-      td #{@user.height}cm
+.row.justify-content-center
+  .col-md-6
+    table.table
+      tbody
+        tr
+          th ユーザー名
+          td = @user.name
+        tr
+          th 性別
+          td=(@user.gender == 1 ? 'MEN' : 'WOMEN')
+        tr
+          th 身長
+          td #{@user.height}cm
 
 h1 投稿した記事
 = render 'articles/article', articles: @articles

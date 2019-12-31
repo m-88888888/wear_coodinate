@@ -1,5 +1,5 @@
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    = link_to 'WEAR_COODINATE', articles_path, class: "navbar-brand"
+nav.navbar.navbar-expand-md.navbar-bg-dark
+    = link_to 'WEAR_COODINATE', root_path, class: "navbar-brand"
 
     .collapse.navbar-collapse#navbarNav
         ul.navbar-nav.ml-auto
@@ -9,7 +9,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
                         = icon("fas", "tshirt")
                         | コーディネート
                     .dropdown-menu
-                        = link_to 'コーディネート集', root_path, class: 'nav-link'
+                        = link_to 'コーディネート集', articles_path, class: 'nav-link'
                         = link_to '人気コーデ', rank_articles_path, class: 'nav-link'
 
                 li.nav-item.dropdown

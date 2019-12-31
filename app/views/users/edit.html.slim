@@ -8,8 +8,11 @@
 
       .form-group
         = f.label :profile_image
-        br
-        = f.file_field :profile_image, class: "form-file-control", id: 'profile_image'
+        - if @user.profile_image?
+          = image_tag(@user.profile_image.url, id: 'img_prev')
+        - else
+          = image_tag('nofile.jpg', id: 'img_prev')
+        = f.file_field :profile_image, class: "form-file-control"
 
       .form-group
         = f.label :name

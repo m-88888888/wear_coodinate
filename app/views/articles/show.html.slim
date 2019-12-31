@@ -1,8 +1,10 @@
 h1 
     | 詳細
 - if user_signed_in? && current_user.id == @article.user.id
-  = link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-3'
-  = link_to '削除', @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'
+  = link_to edit_article_path(@article) do
+    = icon("fas", "edit")
+  / = link_to '編集', edit_article_path(@article), class: 'btn btn-primary mr-3'
+  / = link_to '削除', @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
 h2
     | ユーザー

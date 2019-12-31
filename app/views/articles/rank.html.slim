@@ -1,24 +1,4 @@
-h1 ランキング
+h2 class="text-center"
+  | ランキング
 
-.container
-    .row
-      .card-group
-          - @articles.each do |article|
-            .col-md-4
-              .card.mb-4
-                = link_to image_tag(article.photo.thumb.url, width: "100%", height: "100%"), article_path(article), class: "card-img-top", id: "thmb"
-                .card-body
-                  .media
-                    .circle-image
-                      - if article.user.profile_image?
-                        = image_tag(article.user.profile_image.to_s, class: "mr-3")
-                      - else
-                        = image_tag("default.jpg", class: "mr-3")
-                    .media-body
-                      = link_to article.user.name, user_path(article.user.id)
-                      div id="like-link-#{ article.id}"
-                        == render partial: "likes/like", locals: { article: article }
-                      p.card-text
-                        small.text-muted
-                          | 登録日時：
-                          = article.created_at.strftime("%Y-%m-%d %H:%M")
+== render 'article', articles: @articles
