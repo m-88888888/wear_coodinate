@@ -48,7 +48,7 @@ RSpec.describe '記事管理機能', :type => :system do
   describe '記事編集・削除機能' do
     it '投稿した記事を編集できる', js: true do
       @article = create(:article)
-      visit root_path
+      visit articles_path
       click_on 'thmb'
       click_on '編集'
       attach_file 'article_gears_attributes_0_gear_image', "#{Rails.root}/app/assets/images/default.jpg"
@@ -62,7 +62,7 @@ RSpec.describe '記事管理機能', :type => :system do
     
     it '投稿した記事を削除できる', js: true do
       @article = create(:article)
-      visit root_path
+      visit articles_path
       click_on 'thmb'
       click_on '削除'
       page.accept_confirm
@@ -74,7 +74,7 @@ RSpec.describe '記事管理機能', :type => :system do
     it '他ユーザーの記事は編集・削除できない' do
       create(:men_user)
       create(:other_article)
-      visit root_path
+      visit articles_path
       click_on 'thmb'
       expect(page).not_to eq('編集')
       expect(page).not_to eq('削除')

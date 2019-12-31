@@ -8,7 +8,7 @@ RSpec.describe 'いいね機能', :type => :system do
   end
 
   it '投稿をいいね／いいね解除する', js: true do
-    visit root_path
+    visit articles_path
 
     # いいねボタンがあることを確認
     expect(find('.iine_button')).to have_content '♡0'

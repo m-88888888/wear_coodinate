@@ -8,7 +8,7 @@ RSpec.describe 'コーディネート性別毎表示機能', :type => :system do
       @women = create(:women_user)
       create(:article)
       create(:article, :womens_article)
-      visit root_path
+      visit articles_path
     end
     
     it 'ALLのコーデが表示されること' do
