@@ -43,6 +43,7 @@ group :development, :test do
   #　追加
   gem 'rspec-rails' 
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -56,7 +57,6 @@ group :development do
   gem 'rails-flog', :require => "flog"
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'faker'
 end
 
 group :test do
