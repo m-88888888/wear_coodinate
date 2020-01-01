@@ -1,7 +1,24 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :bigint           not null, primary key
+#  email                  :string(255)      default(""), not null
+#  encrypted_password     :string(255)      default(""), not null
+#  reset_password_token   :string(255)
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  name                   :string(255)
+#  profile_image          :string(255)
+#  gender                 :integer
+#  height                 :integer
+#
+
 FactoryBot.define do
 
   factory :user do
-    id { 1 }
     email { 'test@test.com'}
     password { 'password' }
     password_confirmation { 'password'}
@@ -11,7 +28,6 @@ FactoryBot.define do
   end
 
   factory :men_user, class: User do
-    id { 2 }
     email { 'test@test.com1'}
     password { 'password' }
     password_confirmation { 'password'}
@@ -21,7 +37,6 @@ FactoryBot.define do
   end
 
   factory :women_user, class: User do
-    id { 3 }
     email { Faker::Internet.free_email }
     password { 'password' }
     password_confirmation { 'password'}
@@ -29,5 +44,4 @@ FactoryBot.define do
     gender { 2 }
     height { 200 }
   end
-
 end

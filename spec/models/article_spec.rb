@@ -1,14 +1,25 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id          :bigint           not null, primary key
+#  photo       :string(255)
+#  comment     :text(65535)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  user_id     :integer          not null
+#  likes_count :integer
+#
+
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
 
-  before do
-    @user = create(:user)
-  end
+  let(:user) { create(:user) }
 
-  describe "#create" do
+  describe 'validationのテスト' do
     it 'コーディネート画像、コーディネート紹介文があれば有効な状態であること' do
-      article = create(:article)
+      article = create(:article, user: user)
       article.valid?
       expect(article).to be_valid
     end
