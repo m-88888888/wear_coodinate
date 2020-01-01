@@ -46,7 +46,12 @@ RSpec.describe '記事管理機能', :type => :system do
   end
 
   describe '記事編集・削除機能' do
-    it '投稿した記事を編集できる', js: true do
+    let!(:article) { create(:article, user: user) }
+    before do
+      visit articles_path
+    end
+
+    it '投稿した記事を編集できること', js: true do
       @article = create(:article)
       visit articles_path
       click_on 'thmb'
