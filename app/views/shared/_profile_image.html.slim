@@ -1,4 +1,4 @@
 - if user.profile_image?
-  = image_tag(user.profile_image.url, class: "rounded-circle mx-auto d-block")
+  = image_tag(user.profile_image.thumb.url, class: "rounded-circle mx-auto d-block")
 - else
   = image_tag("default.jpg", class: "rounded-circle mx-auto d-block")
