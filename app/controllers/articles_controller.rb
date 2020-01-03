@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   def index
     if params[:gender].present?
-      @articles = Article.joins(:user).where('gender = ?', params[:gender])
+      @articles = Article.change_gender(params[:gender])
     else
       @articles = Article.all
     end
@@ -59,7 +59,7 @@ class ArticlesController < ApplicationController
   end
 
   def rank
-    @articles = Article.find(Like.group(:article_id).order('count(article_id) desc').pluck(:article_id))
+    @articles = Article.rank
   end
 
 
@@ -69,14 +69,15 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(
                                       :photo,
                                       :comment,
-                                        gears_attributes:[
+                                      gears_attributes:[
                                                           :id,
                                                           :gear_image,
                                                           :name,
                                                           :brand,
                                                           :kind,
                                                           :model_year,
-                                                          :_destroy]
+                                                          :_destroy
+                                                        ]
                                       )
         end
 
