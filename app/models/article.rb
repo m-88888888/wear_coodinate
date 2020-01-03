@@ -23,4 +23,8 @@ class Article < ApplicationRecord
 
   validates :photo, presence: true
   validates :comment, presence: true, length: { maximum: 200}
+
+  scope :change_gender, -> (gender) { joins(:user).where("gender = ?", gender)}
+  scope :rank, -> { find(Like.group(:article_id).order("count(article_id) desc").pluck(:article_id)) }
+  scope :search, ->(keyword) { includes(:gears).where("gears.name LIKE ?", "%#{keyword}%").references(:gears) }
 end
