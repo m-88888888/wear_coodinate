@@ -9,7 +9,7 @@ class GearsController < ApplicationController
 
   def search
     keyword = params[:search]
-    @articles = Article.includes(:gears).where('gears.name LIKE ?', "%#{keyword}%").references(:gears)
+    @articles = Article.search(keyword)
     # raise
     render 'articles/index'
   end
