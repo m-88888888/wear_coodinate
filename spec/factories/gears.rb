@@ -30,4 +30,13 @@ FactoryBot.define do
     model_year { 2019 }
     association :article
   end
+
+  factory :gear3, class: Gear do
+    name { 'hogehoge' }
+    kind { 'ヘルメット' }
+    brand { 'OGASAKA' }
+    model_year { 2019 }
+    association :article
+
+  end
 end
