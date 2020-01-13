@@ -7,7 +7,7 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
   end
 
   describe 'ログイン機能' do
-    it 'かんたんログインでログインできる' do
+    it 'かんたんログインでログインできる', js: true do
       visit new_user_session_path
       click_on('test_login')
       expect(page).to have_text("ログインしました。")
@@ -35,7 +35,7 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
     it 'パスワードを入力せずにプロフィールが編集できる' do
       login_as(@user)
       visit edit_user_path(@user.id)
-      attach_file 'profile_image', "#{Rails.root}/app/assets/images/default.jpg"
+      attach_file 'user_profile_image', "#{Rails.root}/app/assets/images/default.jpg"
       fill_in 'user_name', with: 'テストネーム'
       choose 'WOMEN'
       select '200', from: 'user_height'
@@ -62,13 +62,6 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
       expect(page).to have_text("MEN")
       expect(page).to have_text("170cm")
       # 記事が表示されることを確認するテストを追記すること
-    end
-
-    it '投稿したコーディネート一覧が表示される' do
-      pending "未実装" do
-        
-      end
-      
     end
   end
 

@@ -10,46 +10,40 @@
               - if article.photo?
                 = image_tag(article.photo.url, id: 'img_prev')
               - else
-                / .img_box
-                  span.ico
-                  span.txt
-                      | NO IMAGE
                 = image_tag('nofile.jpg', id: 'img_prev')
-
-              = f.file_field :photo, class: "form-contro-file"
+              = f.file_field :photo, class: "form-control-file"
         .form-group
             = f.label :comment
             = f.text_area :comment, class: "form-control"
-
         .row
           .col-10
             h2 
               | アイテム詳細
-
         = f.nested_fields_for :gears, wrapper_tag: :div do |g|
-          .row
-            .col-6
-              .form-group
-                = g.label :gear_image
-                - if g.object.gear_image?
-                  = image_tag(g.object.gear_image.url, id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
-                - else
-                  = image_tag('nofile.jpg', id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
-                = g.file_field :gear_image, class: "form-contro-file", onChange: "imgPreView(event, 'preview__nested_field_for_replace_with_index__')"
-            .col-6
-              .form-group
-                = g.label :name
-                = g.text_field :name, class: "form-control"
-              .form-group
-                = g.label :brand
-                = g.text_field :brand, class: "form-control"
-              .form-group
-                = g.label :kind
-                = g.select :kind, gear_type_list, { include_blank: true }, class: "form-control"
-              .form-group
-                = g.label :model_year
-                = g.text_field :model_year, class: "form-control"
-              = g.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button'
+          .item
+            .row
+              .col-6
+                .form-group
+                  = g.label :gear_image
+                  - if g.object.gear_image?
+                    = image_tag(g.object.gear_image.url, id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
+                  - else
+                    = image_tag('nofile.jpg', id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
+                  = g.file_field :gear_image, class: "form-control-file gear-file-form"
+              .col-6
+                .form-group
+                  = g.label :name
+                  = g.text_field :name, class: "form-control"
+                .form-group
+                  = g.label :brand
+                  = g.text_field :brand, class: "form-control"
+                .form-group
+                  = g.label :kind
+                  = g.select :kind, gear_type_list, { include_blank: true }, class: "form-control"
+                .form-group
+                  = g.label :model_year
+                  = g.text_field :model_year, class: "form-control"
+                = g.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button'
         = f.add_nested_fields_link :gears, '＋', class: 'btn btn-primary', role: 'button', id: 'add-form'
 
         .actions

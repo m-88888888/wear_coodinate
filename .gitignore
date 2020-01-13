@@ -77,4 +77,7 @@ yarn-debug.log*
 # Ignore VScode settings
 .vscode/launch.json
 
+# Ignore .DS_Store
+.DS_Store
+
 # End of https://www.gitignore.io/api/rails

@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -43,6 +43,7 @@ group :development, :test do
   #　追加
   gem 'rspec-rails' 
   gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -56,7 +57,7 @@ group :development do
   gem 'rails-flog', :require => "flog"
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'faker'
+  gem 'annotate'
 end
 
 group :test do
@@ -65,7 +66,6 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
-  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -77,6 +77,7 @@ gem 'html2slim'
 gem 'bootstrap'
 gem 'rails-i18n', '~> 5.1'
 gem 'carrierwave', '~> 2.0', '>= 2.0.1'
+gem 'fog-aws'
 gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 gem 'devise'
 gem 'devise-i18n'
@@ -86,3 +87,5 @@ gem 'jquery'
 gem 'jquery-rails'
 gem 'nested_form'
 gem 'jquery-ui-rails'
+gem 'font-awesome-sass', '~> 5.12.0'
+gem 'dotenv-rails'

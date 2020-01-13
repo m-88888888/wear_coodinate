@@ -1,0 +1,12 @@
+
+.container
+  p
+    a href="#" ガイドライン
+    |・
+    a href="#" プライバシーポリシー
+    -if user_signed_in?
+      |・
+      = link_to 'マイページ', user_path(id: current_user.id)
+                    
+.footer_bar
+  p copyright (C) 2019 wear_coodinate all rights reserved.

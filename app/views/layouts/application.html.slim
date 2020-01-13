@@ -9,11 +9,13 @@ html lang="ja"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   body
-    .container
-      header
-        == render 'layouts/header'
+    header
+      == render 'layouts/header'
 
     .container
       main
         == render 'layouts/flash'
         == yield
+
+    footer
+      == render 'layouts/footer'

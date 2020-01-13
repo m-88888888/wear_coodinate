@@ -1,5 +1,4 @@
-.circle-image
-  - if user.profile_image?
-    = image_tag(user.profile_image.to_s, class: "mr-3")
-  - else
-    = image_tag("default.jpg", class: "mr-3")
+- if user.profile_image?
+  = image_tag(user.profile_image.thumb.url, class: "rounded-circle mx-auto d-block")
+- else
+  = image_tag("default.jpg", class: "rounded-circle mx-auto d-block")
