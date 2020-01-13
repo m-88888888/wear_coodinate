@@ -1,13 +1,18 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy, :update]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    @articles = Article.all
+    if params[:gender].present?
+      @articles = Article.change_gender(params[:gender])
+    else
+      @articles = Article.all
+    end
   end
 
   def show
     @article = Article.find(params[:id])
-    @gears = @article.gears.all
+    @gears = @article.gears
   end
 
   def new
@@ -53,10 +58,32 @@ class ArticlesController < ApplicationController
     redirect_to articles_path, notice: "記事を削除しました。"
   end
 
+  def rank
+    @articles = Article.rank
+  end
+
+
   private
 
     def article_params
-      params.require(:article).permit(:photo, :comment, gears_attributes:[:id, :url, :gear_image, :name, :brand, :kind, :model_year])
+      params.require(:article).permit(
+                                      :photo,
+                                      :comment,
+                                      gears_attributes:[
+                                                          :id,
+                                                          :gear_image,
+                                                          :name,
+                                                          :brand,
+                                                          :kind,
+                                                          :model_year,
+                                                          :_destroy
+                                                        ]
+                                      )
+        end
+
+    def correct_user
+      @article = current_user.articles.find_by(id: params[:id])
+      redirect_to(root_path) unless @article
     end
 
 end

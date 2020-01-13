@@ -1,0 +1,51 @@
+.row.justify-content-center
+  .col-md-5
+    h2
+      | プロフィール編集
+
+    = form_with model: @user, local: true do |f|
+      = render 'shared/flash', { object: f.object}
+
+      .form-group
+        = f.label :profile_image
+        - if @user.profile_image?
+          = image_tag(@user.profile_image.url, id: 'img_prev')
+        - else
+          = image_tag('nofile.jpg', id: 'img_prev')
+        = f.file_field :profile_image, class: "form-file-control"
+
+      .form-group
+        = f.label :name
+        br
+        = f.text_field :name, class: "form-control form-control-lg"
+
+      .form-group
+        = f.label :gender
+        br
+        .custom-control.custom-radio.custom-control-inline
+          = f.radio_button :gender, 1
+          = f.label :gender, 'MEN', value: "1"
+        .custom-control.custom-radio.custom-control-inline
+          = f.radio_button :gender, 2
+          = f.label :gender, 'WOMEN',  value: "2"
+        
+      .form-group
+        = f.label :height
+        = f.select :height, height_array, {}, class: "custom-select"
+
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: "form-control form-control-lg"
+      .form-group
+        = f.label :password
+        em
+          |  (未記入でも可)
+
+        = f.password_field :password, class: "form-control form-control-lg"
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: "form-control form-control-lg"
+
+
+      button.btn.btn-lg.btn-primary.btn-block
+        | 更新

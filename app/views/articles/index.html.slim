@@ -1,17 +1,12 @@
-h2
-  | 通常記事一覧
+h2 class="text-center"
+  | コーディネート
 
-.container
-  .row
-    .card-group
-      - @articles.each do |article|
-        .col-md-4
-          .card style="width: max-width: 25rem;" 
-            = link_to image_tag(article.photo.thumb.to_s), article_path(article), class: "card-img-top" 
-            .card-body
-              .media
-                = image_tag(article.user.profile_image.to_s, class: "mr-3", size: "")
-                .media-body
-                  = link_to article.user.name, '#'
-                  div id="like-link-#{ article.id}"
-                    == render partial: "likes/like", locals: { article: article }
+ul.nav.nav-tabs.nav-fill
+  li.nav-item
+    = link_to  "ALL", articles_path, class: "nav-link #{('active' if current_page?(articles_path))}"
+  li.nav-item
+    = link_to  "MEN", gender_index_articles_path(gender: 1), class: "nav-link #{('active' if current_page?('/articles/gender/1'))}"
+  li.nav-item
+    = link_to  "WOMEN", gender_index_articles_path(gender: 2), class: "nav-link #{('active' if current_page?('/articles/gender/2'))}"
+
+= render 'articles/article', articles: @articles

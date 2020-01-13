@@ -42,12 +42,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password, :name, :profile_image])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :encrypted_password, :name, :profile_image, :gender, :height])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:email, :encrypted_password, :name, :profile_image, :gender, :height])
   # end
 
   # The path used after sign up.
@@ -58,5 +58,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
+  # end
+
+  # パスワードの入力をせずにUserモデルを更新する
+  # def update_resource(resource, params)
+  #   if params[:password].present? && params[:password_confirmation].present?
+  #     resource.update_attributes(params)
+  #   else
+  #     resource.update_without_password(params)
+  #   end
   # end
 end

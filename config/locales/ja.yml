@@ -206,6 +206,7 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
 
+  # ファイルアップロード
   errors:
     messages:
       carrierwave_processing_error: 処理できませんでした
@@ -216,3 +217,29 @@ ja:
       rmagick_processing_error: "rmagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
       mime_types_processing_error: "MIME::Typesのファイルを処理できませんでした。Content-Typeを確認してください。エラーメッセージ: %{e}"
       mini_magick_processing_error: "MiniMagickがファイルを処理できませんでした。画像を確認してください。エラーメッセージ: %{e}"
+
+  activerecord:
+    attributes:
+      # ユーザー
+      user:
+        profile_image: プロフィール画像
+        gender: 性別
+        height: 身長
+      # 投稿記事
+      article:
+        photo: コーディネート画像
+        comment: コーディネート紹介文
+        likes_count: いいね数
+      # ギア
+      gears:
+        gear_image: アイテム画像
+        name: アイテム名
+        kind: 種類
+        brand: ブランド
+        model_year: モデル年式
+      gear:
+        gear_image: アイテム画像
+        name: アイテム名
+        kind: 種類
+        brand: ブランド
+        model_year: モデル年式

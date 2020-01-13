@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_161655) do
+ActiveRecord::Schema.define(version: 2019_11_18_143034) do
 
   create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "photo"
@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2019_10_30_161655) do
   end
 
   create_table "gears", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "url"
     t.integer "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_10_30_161655) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "profile_image"
+    t.integer "gender"
+    t.integer "height"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

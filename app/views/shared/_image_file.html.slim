@@ -1,0 +1,7 @@
+.imagePreview
+.input-group
+  = f.label :user.profile_image, class: "input-group-btn"
+    span.btn.btn-primary
+      | 参照
+      = f.file_field :user.profile_image, class: "uploadFile", style: "display:none"
+    <input type="text" class="form-control" readonly="">
