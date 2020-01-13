@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # アイテム
   resources :gears, only: [ :index ] do
     get "/search", to: "gears#search", as: 'search', on: :collection
+    get "/narrow_down", to: "gears#search_gear", as: 'narrow_down', on: :collection
   end
 
   # いいね

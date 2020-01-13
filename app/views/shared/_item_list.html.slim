@@ -3,7 +3,11 @@
     - @gears.each do |gear|
       .col-md-4
         .card.md-4
-          = image_tag(gear.gear_image.url, class: "card-img")
+          - if gear.gear_image?
+            = image_tag(gear.gear_image.url, class: "card-img")
+          - else
+            = image_tag("nofile.jpg", class: "card-img")
+
           .card-body
             table.table
               tbody

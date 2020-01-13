@@ -24,10 +24,12 @@
   .col-md-6
     .float-right
       - if user_signed_in? && current_user.id == @article.user.id
-        = link_to edit_article_path(@article) do
-          = icon("fas", "edit fa-2x")
-        = link_to @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" } do
-          = icon("fas", "trash-alt fa-2x")
+        button.edit-btn
+          = link_to edit_article_path(@article) do
+            = icon("fas", "edit fa-2x")
+        button.delete-btn
+          = link_to @article, method: :delete, data: { confirm: "記事を削除します。よろしいですか？" } do
+            = icon("fas", "trash-alt fa-2x")
 
 .card.mb-3
     .row.no-gutters

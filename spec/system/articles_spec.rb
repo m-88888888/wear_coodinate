@@ -12,7 +12,7 @@ RSpec.describe '記事管理機能', :type => :system do
       visit new_article_path
     end
 
-    it '正常に記事が投稿できること' do
+    it '正常に記事が投稿できること', js: true do
       attach_file 'article_photo', "#{Rails.root}/app/assets/images/default.jpg"
       fill_in 'article_comment', with: 'hogehogehoge'
       attach_file 'article_gears_attributes_0_gear_image', "#{Rails.root}/app/assets/images/default.jpg"
@@ -34,7 +34,7 @@ RSpec.describe '記事管理機能', :type => :system do
       expect(page).not_to have_css('#article_gears_attributes_0_name')
     end
   
-    it '未入力の場合は投稿できないこと' do
+    it '未入力の場合は投稿できないこと', js: true do
       click_on '登録する'
       expect(page).to have_text('アイテム名を入力してください')
       expect(page).to have_text('ブランドを入力してください')
@@ -54,7 +54,7 @@ RSpec.describe '記事管理機能', :type => :system do
 
     it '投稿した記事を編集できること', js: true do
       click_on 'thmb'
-      click_on '編集'
+      find(".edit-btn").click
       attach_file 'article_gears_attributes_0_gear_image', "#{Rails.root}/app/assets/images/default.jpg"
       fill_in 'article_gears_attributes_0_name', with: 'hoge'
       fill_in 'article_gears_attributes_0_brand', with: 'hoge'
@@ -66,7 +66,7 @@ RSpec.describe '記事管理機能', :type => :system do
     
     it '投稿した記事を削除できること', js: true do
       click_on 'thmb'
-      click_on '削除'
+      find(".delete-btn").click
       page.accept_confirm
       expect(page).to have_text('記事を削除しました。')
     end
