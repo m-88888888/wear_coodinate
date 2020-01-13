@@ -35,7 +35,7 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
     it 'パスワードを入力せずにプロフィールが編集できる' do
       login_as(@user)
       visit edit_user_path(@user.id)
-      attach_file 'profile_image', "#{Rails.root}/app/assets/images/default.jpg"
+      attach_file 'user_profile_image', "#{Rails.root}/app/assets/images/default.jpg"
       fill_in 'user_name', with: 'テストネーム'
       choose 'WOMEN'
       select '200', from: 'user_height'
