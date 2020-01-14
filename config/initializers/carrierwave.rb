@@ -1,12 +1,12 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     provider: 'AWS',
-    aws_access_key_id: ENV["AWS_ACCESS_KEY"],
-    aws_secret_access_key: ENV["AWS_SECRET_KEY"],
+    aws_access_key_id: Rails.application.credentials.aws[:access_key_id],
+    aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
     region: 'ap-northeast-1'
   }
 
-  config.fog_directory  = ENV["AWS_FOG_DIRECTORY"]
-  config.asset_host = ENV["AWS_ASSET_HOST"]
+  config.fog_directory  = Rails.application.credentials.aws[:fog_directory]
+  config.asset_host = Rails.application.credentials.aws[:asset_host]
   config.cache_storage = :fog
 end
