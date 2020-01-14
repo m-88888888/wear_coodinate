@@ -49,6 +49,9 @@ test:
 #
 production:
   <<: *default
+  adapter: mysql2
+  encoding: utf8
   database: wear_coodinate_production
   username: wear_coodinate
   password: <%= ENV['WEAR_COODINATE_DATABASE_PASSWORD'] %>
+  host: wear-coodinate.herokuapp.com
