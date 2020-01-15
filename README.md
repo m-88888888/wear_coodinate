@@ -5,7 +5,7 @@
 転職活動用のポートフォリオとして作成致しました。
 
 # App URL
-here
+https://wear-coodinate.herokuapp.com/
 
 # 機能
 - ユーザー登録、ログイン機能（device)
