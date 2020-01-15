@@ -27,6 +27,7 @@ https://wear-coodinate.herokuapp.com/
   - Capybara
 - Git/Github
 - Heroku
+- AWS S3
 
 # 力を入れたところ
 ## 1. 特定のアイテムを使ったコーディネート検索機能
