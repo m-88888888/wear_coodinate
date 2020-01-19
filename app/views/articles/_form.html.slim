@@ -26,10 +26,10 @@
                 .form-group
                   = g.label :gear_image
                   - if g.object.gear_image?
-                    = image_tag(g.object.gear_image.url, id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
+                    = image_tag(g.object.gear_image.url, id: 'preview', class: 'gear_image')
                   - else
-                    = image_tag('nofile.jpg', id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
-                  = g.file_field :gear_image, class: "form-control-file gear-file-form"
+                    = image_tag('nofile.jpg', id: 'preview', class: 'gear_image')
+                  = g.file_field :gear_image, class: "form-control-file image_preview"
               .col-6
                 .form-group
                   = g.label :name
