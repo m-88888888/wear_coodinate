@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require nested_form_fields
-//= require activestorage
+//= reqyure jquery_nested_form
+// require activestorage
 //= require_tree
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -40,4 +40,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //   reader.readAsDataURL(event.target.files[0]);
   // }
+
+  var index = 1;
+  var fuga = '#preview';
+
+  document.getElementById('add-form').addEventListener("click", function () {
+    index += 1;
+    window.onload = hogehoge.bind(this, index); // 2
+  }, false);
+
+  // 関数①
+  windows.nested_form_fields.bind_nested_forms_links = ()
+  function hogehoge(index) {
+    for (var i = 0; i < index; i++) {
+      (function (j) {
+        fuga += j.toFixed();
+        var id = 'article_gears_attributes_' + j + '_gear_image';
+        document.getElementById(id).addEventListener("change", function (evt) {
+          var file = evt.target.files;
+          var reader = new FileReader();
+          reader.readAsDataURL(file[0]);
+          reader.onload = function () {
+            document.querySelector(fuga).src = reader.result;
+          }
+        }, false);
+      }(i));
+    }
+  };
+  // window.onload = hogehoge(index);
 });
