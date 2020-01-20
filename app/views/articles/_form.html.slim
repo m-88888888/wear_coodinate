@@ -1,5 +1,5 @@
 .container
-    = form_with model: article, local: true do |f|
+    = nested_form_for article, local: true do |f|
         = render 'shared/flash', { object: f.object}
 
         .form-group
@@ -11,7 +11,7 @@
                 = image_tag(article.photo.url, id: 'img_prev')
               - else
                 = image_tag('nofile.jpg', id: 'img_prev')
-              = f.file_field :photo, class: "form-control-file"
+              = f.file_field :photo, class: "form-control-file", id: "image-file"
         .form-group
             = f.label :comment
             = f.text_area :comment, class: "form-control"
@@ -19,17 +19,17 @@
           .col-10
             h2 
               | アイテム詳細
-        = f.nested_fields_for :gears, wrapper_tag: :div do |g|
+        = f.fields_for :gears do |g|
           .item
             .row
               .col-6
                 .form-group
                   = g.label :gear_image
                   - if g.object.gear_image?
-                    = image_tag(g.object.gear_image.url, id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
+                    = image_tag(g.object.gear_image.url, id: 'preview', class: 'gear_image')
                   - else
-                    = image_tag('nofile.jpg', id: 'preview__nested_field_for_replace_with_index__', class: 'gear_image')
-                  = g.file_field :gear_image, class: "form-control-file gear-file-form"
+                    = image_tag('nofile.jpg', id: 'preview', class: 'gear_image')
+                  = g.file_field :gear_image, class: "form-control-file image_preview"
               .col-6
                 .form-group
                   = g.label :name
@@ -43,8 +43,8 @@
                 .form-group
                   = g.label :model_year
                   = g.text_field :model_year, class: "form-control"
-                = g.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button'
-        = f.add_nested_fields_link :gears, '＋', class: 'btn btn-primary', role: 'button', id: 'add-form'
+                = g.link_to_remove '削除', class: 'btn btn-danger'
+        = f.link_to_add '追加', :gears, class: 'btn btn-primary', id: 'add-form'
 
         .actions
           = f.submit nil, class: 'btn btn-primary'

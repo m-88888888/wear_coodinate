@@ -26,7 +26,6 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to articles_path, notice: "記事を登録しました。"
     else
-      # redirect_to new_article_path
       render :new
     end
 

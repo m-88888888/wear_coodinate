@@ -13,12 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require nested_form_fields
+//= require jquery_nested_form
 //= require activestorage
 //= require_tree
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('article_photo').addEventListener("change", function (evt) {
+  document.getElementById('image-file').addEventListener("change", function (evt) {
     var file = evt.target.files;
     var reader = new FileReader();
     reader.readAsDataURL(file[0]);
@@ -27,17 +27,42 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }, false);
 
-  // gearフォームの画像プレビュー（37行目でエラー)
-  // function imgPreView(event, targetId) {
-  //   var reader = new FileReader();
-  //   var file = event.target.files[0];
-  //   var preview = document.getElementById(targetId);
+  document.getElementById('article_gears_attributes_0_gear_image').addEventListener("change", function (evt) {
+    var file = evt.target.files;
+    var reader = new FileReader();
+    reader.readAsDataURL(file[0]);
+    reader.onload = function () {
+      document.querySelector('#preview').src = reader.result;
+    }
+  }, false);
 
-  //   reader.onload = function (event) {
-  //     // document.querySelector(targetId).src = reader.result;
-  //     document.querySelector("#preview" + targetId).src = reader.result;
-  //   };
+});
 
-  //   reader.readAsDataURL(event.target.files[0]);
-  // }
+$(document).on('nested:fieldAdded', function (event) {
+  var field = event.field;
+  var addField = field.find('.add_nested_fields');
+  addField.click();
+});
+
+$(function() {
+
+  function setImagePreview() {
+    const targets = document.getElementsByClassName('image_preview')
+    for (let i = 0; i < targets.length; i++) {
+      targets[i].addEventListener("change", function(evt) {
+        var file = evt.target.files;
+        var reader = new FileReader();
+        reader.readAsDataURL(file[0]);
+        reader.onload = function () {
+          var preview_list = document.querySelectorAll('.gear_image')
+          preview_list[i].src = reader.result;
+        }
+      }, false);
+    }
+  }
+
+  $(document).on('nested:fieldAdded', function (event) {
+      setImagePreview();
+  });
+  
 });
