@@ -10,10 +10,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # def edit_password
-  #   @user = User.find(params[:id])
-  # end
-
   def update
     @user = User.find(params[:id])
     if params[:user][:password].blank?
@@ -30,7 +26,6 @@ class UsersController < ApplicationController
   def update_password
     @user = current_user
     if @user.update(user_password_params)
-      # Sign in the user by passing validation in case their password changed
       bypass_sign_in(@user)
       redirect_to root_path, notice: "パスワードを更新しました。"
     else
@@ -41,7 +36,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :profile_image, :gender, :height, :password, :password_confirmation, :email)
+      params.require(:user).permit(:name, :profile_image, :gender, :height, :password, :password_confirmation, :email, :created_at, :updated_at)
     end
 
     def user_password_params

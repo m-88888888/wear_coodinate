@@ -11,7 +11,7 @@
                 = image_tag(article.photo.url, id: 'img_prev')
               - else
                 = image_tag('nofile.jpg', id: 'img_prev')
-              = f.file_field :photo, class: "form-control-file"
+              = f.file_field :photo, class: "form-control-file", id: "image-file"
         .form-group
             = f.label :comment
             = f.text_area :comment, class: "form-control"

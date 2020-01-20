@@ -14,11 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery_nested_form
-// require activestorage
+//= require activestorage
 //= require_tree
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('article_photo').addEventListener("change", function (evt) {
+  document.getElementById('image-file').addEventListener("change", function (evt) {
     var file = evt.target.files;
     var reader = new FileReader();
     reader.readAsDataURL(file[0]);
