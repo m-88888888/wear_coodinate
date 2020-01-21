@@ -41,9 +41,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   #　追加
-  gem 'rspec-rails' 
-  gem 'factory_bot_rails'
   gem 'faker'
+  gem "pry-rails"
 end
 
 group :development do
@@ -58,6 +57,8 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'annotate'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
@@ -66,12 +67,15 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  #追加
+  gem 'rspec-rails' 
+  gem 'factory_bot_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# 追加Gem
+# 追加
 gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap'
