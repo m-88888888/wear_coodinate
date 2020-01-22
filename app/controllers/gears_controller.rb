@@ -20,17 +20,18 @@ class GearsController < ApplicationController
   end
 
   private
-    def gear_search_params
-      params.require(:gear).permit(:name, :brand, :kind, :search)
-    end
 
-    def narrow_down_list
-      @brands = []
-      @kinds = []
+  def gear_search_params
+    params.require(:gear).permit(:name, :brand, :kind, :search)
+  end
 
-      Gear.all.each do |gear|
-        @brands << gear.brand
-        @kinds << gear.kind
-      end
+  def narrow_down_list
+    @brands = []
+    @kinds = []
+
+    Gear.all.each do |gear|
+      @brands << gear.brand
+      @kinds << gear.kind
     end
+  end
 end

@@ -11,8 +11,8 @@ else
       aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
       region: 'ap-northeast-1'
     }
-    
-    config.fog_directory  = Rails.application.credentials.aws[:fog_directory]
+
+    config.fog_directory = Rails.application.credentials.aws[:fog_directory]
     config.asset_host = Rails.application.credentials.aws[:asset_host]
     config.cache_storage = :fog
   end

@@ -30,14 +30,13 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 15 }
   validates :gender, presence: true, numericality: {
-      only_integer: true,
-      greater_than: 0,
-      less_than: 3
+    only_integer: true,
+    greater_than: 0,
+    less_than: 3
   }
   validates :height, presence: true, numericality: {
-      only_integer: true,
-      greater_than: 139,
-      less_than: 221
+    only_integer: true,
+    greater_than: 139,
+    less_than: 221
   }
-  
 end

@@ -8,7 +8,7 @@ gem 'rails', '~> 5.2.3'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
-gem "puma", ">= 3.12.2"
+gem 'puma', '>= 3.12.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,24 +40,26 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
-  #　追加
-  gem 'rspec-rails' 
-  gem 'factory_bot_rails'
+  # 　追加
   gem 'faker'
+  gem 'pry-rails'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
   # 追加
-  gem 'rails-flog', :require => "flog"
+  gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'annotate'
+  gem 'rails-flog', require: 'flog'
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
@@ -66,25 +68,28 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # 追加
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# 追加Gem
-gem 'slim-rails'
-gem 'html2slim'
+# 追加
 gem 'bootstrap'
-gem 'rails-i18n', '~> 5.1'
 gem 'carrierwave', '~> 2.0', '>= 2.0.1'
-gem 'fog-aws'
-gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'dotenv-rails'
+gem 'fog-aws'
+gem 'font-awesome-sass', '~> 5.12.0'
+gem 'html2slim'
 gem 'jquery'
 gem 'jquery-rails'
-gem 'nested_form'
 gem 'jquery-ui-rails'
-gem 'font-awesome-sass', '~> 5.12.0'
-gem 'dotenv-rails'
+gem 'mini_magick', '~> 4.9', '>= 4.9.5'
+gem 'nested_form'
+gem 'rails-i18n', '~> 5.1'
+gem 'slim-rails'

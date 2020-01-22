@@ -37,6 +37,5 @@ FactoryBot.define do
     brand { 'OGASAKA' }
     model_year { 2019 }
     association :article
-
   end
 end

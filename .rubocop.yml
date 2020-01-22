@@ -1,11 +1,74 @@
-inherit_gem:
-  onkcop:
-    - "config/rubocop.yml"
-    # uncomment if use rails cops
-    - "config/rails.yml"
-    # uncomment if use rspec cops
-    - "config/rspec.yml"
+inherit_from: .rubocop_todo.yml
 
-AllCops:
-  TargetRubyVersion: 2.5.1
-  TargetRailsVersion: 5.2.3
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'db/schema.rb'
+
+Metrics/AbcSize:
+  Max: 19
+
+Security/Open:
+  Exclude:
+    - 'db/seeds.rb'
+
+Metrics/MethodLength:
+  Max: 15
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/users/*'
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Exclude:
+    - 'app/controllers/static_controller.rb'
+
+Style/ExpandPathArguments:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Lambda:
+  Enabled: false
+
+Style/MixinUsage:
+  Enabled: false
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
+Style/PercentLiteralDelimiters:
+  Exclude:
+    - 'app/uploaders/gear_image_uploader.rb'
+    - 'app/uploaders/photo_uploader.rb'
+    - 'app/uploaders/profile_image_uploader.rb'
+
+Style/RedundantBegin:
+  Exclude:
+    - 'bin/yarn'
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/StderrPuts:
+  Exclude:
+    - 'bin/yarn'
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Metrics/LineLength:
+  Max: 155

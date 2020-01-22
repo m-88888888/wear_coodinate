@@ -4,7 +4,7 @@ class AddUserIdToArticles < ActiveRecord::Migration[5.2]
     add_reference :articles, :user, null: false, index: true
   end
 
-  def down 
+  def down
     remove_reference :articles, :user, index: true
   end
 end

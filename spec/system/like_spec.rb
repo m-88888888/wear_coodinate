@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'いいね機能', :type => :system do
+RSpec.describe 'いいね機能', type: :system do
   before do
     user = create(:user)
     create(:article, user: user)
@@ -14,11 +14,11 @@ RSpec.describe 'いいね機能', :type => :system do
     expect(find('.like-btn')).to have_content '0'
 
     # 投稿にいいねする
-    find(".like-btn").click
+    find('.like-btn').click
     expect(find('.like-btn')).to have_content '1'
 
     # 投稿のいいねを解除する
-    find(".like-btn").click
+    find('.like-btn').click
     expect(find('.like-btn')).to have_content '0'
   end
 end
