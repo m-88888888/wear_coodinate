@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'ユーザー管理機能', :type => :system do
+RSpec.describe 'ユーザー管理機能', type: :system do
   before do
     @user = create(:user)
     logout(@user)
@@ -10,15 +10,15 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
     it 'かんたんログインでログインできる', js: true do
       visit new_user_session_path
       click_on('test_login')
-      expect(page).to have_text("ログインしました。")
+      expect(page).to have_text('ログインしました。')
     end
 
     it '通常のログイン機能を使用してログインできる' do
       visit new_user_session_path
-      fill_in "inputEmail",	with: "test@test.com"
-      fill_in "inputPassword", with: "password"
+      fill_in 'inputEmail', with: 'test@test.com'
+      fill_in 'inputPassword', with: 'password'
       click_on 'login'
-      expect(page).to have_text("ログインしました。")  
+      expect(page).to have_text('ログインしました。')
     end
   end
 
@@ -27,7 +27,7 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
       visit new_user_session_path
       click_on 'test_login'
       click_on 'ログアウト'
-      expect(page).to have_text("ログアウトしました。")
+      expect(page).to have_text('ログアウトしました。')
     end
   end
 
@@ -41,7 +41,7 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
       select '200', from: 'user_height'
       fill_in 'user_email', with: 'hoge@hoge.com'
       click_on '更新'
-      expect(page).to have_text("ユーザープロフィールを更新しました。")
+      expect(page).to have_text('ユーザープロフィールを更新しました。')
     end
 
     it 'パスワードを変更できる' do
@@ -50,7 +50,7 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
       fill_in 'user_password', with: 'hogehoge'
       fill_in 'user_password_confirmation', with: 'hogehoge'
       click_on '更新'
-      expect(page).to have_text("ユーザープロフィールを更新しました。")
+      expect(page).to have_text('ユーザープロフィールを更新しました。')
     end
   end
 
@@ -59,10 +59,9 @@ RSpec.describe 'ユーザー管理機能', :type => :system do
       login_as(@user)
       visit user_path(@user.id)
       expect(page).to have_text(@user.name)
-      expect(page).to have_text("MEN")
-      expect(page).to have_text("170cm")
+      expect(page).to have_text('MEN')
+      expect(page).to have_text('170cm')
       # 記事が表示されることを確認するテストを追記すること
     end
   end
-
 end

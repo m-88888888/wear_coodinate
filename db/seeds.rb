@@ -4,7 +4,7 @@
 User.create!(
   name: 'test_login_user',
   email: 'test@test.com',
-  password: 'password' ,
+  password: 'password',
   password_confirmation: 'password',
   gender: 1,
   height: 180,
@@ -27,7 +27,7 @@ end
   Article.create(
     user_id: num,
     photo: open("#{Rails.root}/db/fixtures/nofile.jpg"),
-    comment: Faker::Lorem.paragraph_by_chars(number: 200),
+    comment: Faker::Lorem.paragraph_by_chars(number: 200)
   )
 end
 

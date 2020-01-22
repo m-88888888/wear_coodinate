@@ -17,20 +17,19 @@
 #
 
 FactoryBot.define do
-
   factory :user do
-    email { 'test@test.com'}
+    email { 'test@test.com' }
     password { 'password' }
-    password_confirmation { 'password'}
+    password_confirmation { 'password' }
     name { Faker::Name.unique.name }
     gender { 1 }
     height { 170 }
   end
 
   factory :men_user, class: User do
-    email { 'test@test.com1'}
+    email { 'test@test.com1' }
     password { 'password' }
-    password_confirmation { 'password'}
+    password_confirmation { 'password' }
     name { Faker::Name.unique.name }
     gender { 1 }
     height { 180 }
@@ -39,7 +38,7 @@ FactoryBot.define do
   factory :women_user, class: User do
     email { Faker::Internet.free_email }
     password { 'password' }
-    password_confirmation { 'password'}
+    password_confirmation { 'password' }
     name { Faker::Name.unique.name }
     gender { 2 }
     height { 200 }

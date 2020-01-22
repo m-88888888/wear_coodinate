@@ -3,11 +3,11 @@ class ArticlesController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
-    if params[:gender].present?
-      @articles = Article.change_gender(params[:gender])
-    else
-      @articles = Article.all
-    end
+    @articles = if params[:gender].present?
+                  Article.change_gender(params[:gender])
+                else
+                  Article.all
+                end
   end
 
   def show
@@ -24,11 +24,10 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     if @article.save
-      redirect_to articles_path, notice: "記事を登録しました。"
+      redirect_to articles_path, notice: '記事を登録しました。'
     else
       render :new
     end
-
   end
 
   def edit
@@ -40,12 +39,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.user_id = current_user.id
 
-    if @article.photo.nil?
-      @article.photo = default_url
-    end
+    @article.photo = default_url if @article.photo.nil?
 
     if @article.update(article_params)
-      redirect_to articles_path, notice: "記事を更新しました。"
+      redirect_to articles_path, notice: '記事を更新しました。'
     else
       render :edit
     end
@@ -54,35 +51,33 @@ class ArticlesController < ApplicationController
   def destroy
     article = Article.find(params[:id])
     article.destroy
-    redirect_to articles_path, notice: "記事を削除しました。"
+    redirect_to articles_path, notice: '記事を削除しました。'
   end
 
   def rank
     @articles = Article.rank
   end
 
-
   private
 
-    def article_params
-      params.require(:article).permit(
-                                      :photo,
-                                      :comment,
-                                      gears_attributes:[
-                                                          :id,
-                                                          :gear_image,
-                                                          :name,
-                                                          :brand,
-                                                          :kind,
-                                                          :model_year,
-                                                          :_destroy
-                                                        ]
-                                      )
-        end
+  def article_params
+    params.require(:article).permit(
+      :photo,
+      :comment,
+      gears_attributes: [
+        :id,
+        :gear_image,
+        :name,
+        :brand,
+        :kind,
+        :model_year,
+        :_destroy
+      ]
+    )
+  end
 
-    def correct_user
-      @article = current_user.articles.find_by(id: params[:id])
-      redirect_to(root_path) unless @article
-    end
-
+  def correct_user
+    @article = current_user.articles.find_by(id: params[:id])
+    redirect_to(root_path) unless @article
+  end
 end

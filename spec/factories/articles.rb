@@ -14,19 +14,18 @@
 FactoryBot.define do
   factory :article, class: Article do
     photo { File.new("#{Rails.root}/spec/fixtures/nofile.jpg") }
-    comment { "テストコメント" }
+    comment { 'テストコメント' }
     association :user
 
     trait :womens_article do
       comment { 'women users' }
       association :user
     end
-    
   end
 
   factory :other_article, class: Article do
     photo { File.new("#{Rails.root}/spec/fixtures/nofile.jpg") }
-    comment { "テストコメント" }
+    comment { 'テストコメント' }
     association :user
   end
 end

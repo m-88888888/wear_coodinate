@@ -13,8 +13,8 @@ class LikesController < ApplicationController
 
   private
 
-    def set_valiables
-      @article = Article.find(params[:article_id])
-      @id_name = "#like-link-#{@article.id}"
-    end
+  def set_valiables
+    @article = Article.find(params[:article_id])
+    @id_name = "#like-link-#{@article.id}"
+  end
 end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe '人気コーデ表示機能', :type => :system do
+RSpec.describe '人気コーデ表示機能', type: :system do
   it 'いいね数が多い順に表示される' do
     user = create(:user)
     user2 = create(:men_user)
@@ -14,7 +14,7 @@ RSpec.describe '人気コーデ表示機能', :type => :system do
     create(:like3, user: user3, article: article)
 
     login_as(user)
-    
+
     visit rank_articles_path
     expect(page.text).to match %r{#{article.likes_count}.*#{other_article.likes_count}}
   end
