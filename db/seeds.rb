@@ -14,8 +14,8 @@ User.create!(
 
 4.times do |n|
   User.create(
-    name: Faker::Name.unique.name,
-    email: Faker::Internet.email,
+    name: Faker::Internet.username(specifier: 5..8),
+    email: "sample#{n}@example.com",
     password: 'password',
     password_confirmation: 'password',
     gender: Faker::Number.between(from: 1, to: 2),
