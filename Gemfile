@@ -41,7 +41,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # 　追加
-  gem 'faker'
   gem 'pry-rails'
 end
 
@@ -83,6 +82,7 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'dotenv-rails'
+gem 'faker'
 gem 'fog-aws'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'html2slim'
