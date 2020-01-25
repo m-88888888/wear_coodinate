@@ -7,8 +7,9 @@
       | WEAR_COODINATEは、スキー・スノーボードウェアのコーディネートを共有するサイトです。
 
     p.h2.mt-5
-      = icon("fas", "tshirt")
-      | コーディネートを探す
+      = link_to articles_path do
+        = icon("fas", "tshirt")
+        | コーディネートを探す
 
     p.mt-5
       |　投稿されたコーディネートを見たり、自分で投稿することができます。
@@ -16,9 +17,9 @@
       | また、いいねが多い順にランキングが作成されます。
 
     p.h2.mt-5
-      = icon("fas", "mitten")
-      | アイテム
-
+      = link_to gears_path do
+        = icon("fas", "mitten")
+        | アイテムを探す
 
     p.mt-5
       | コーディネートに登録されているアイテムの一覧を見ることができます。
