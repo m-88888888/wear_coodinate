@@ -1,0 +1,20 @@
+.display-4 class="text-center"
+  | 楽天検索結果
+
+- if @items.count > 0
+    table.table
+      tbody
+        tr
+          th アイテム画像
+          th アイテム名
+          th 値段
+        - @items.each do |item|
+          tr
+            td= link_to image_tag(item['mediumImageUrls'][0]), item['itemUrl']
+            td= item['itemName']
+            td
+              | ¥
+              = item['itemPrice']
+
+- else
+  | 商品が見つかりませんでした。

@@ -19,6 +19,11 @@ class GearsController < ApplicationController
     render 'articles/index'
   end
 
+  def rakuten_search
+    keyword = params[:rakuten_search]
+    @items = RakutenWebService::Ichiba::Item.search(keyword: keyword)
+  end
+
   private
 
   def gear_search_params
