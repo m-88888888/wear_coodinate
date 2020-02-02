@@ -13,7 +13,7 @@ class GearsController < ApplicationController
     render action: :index
   end
 
-  def search
+  def search_article
     keyword = params[:search]
     @articles = Article.search(keyword)
     render 'articles/index'
