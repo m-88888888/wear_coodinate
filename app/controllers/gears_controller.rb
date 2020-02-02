@@ -8,8 +8,7 @@ class GearsController < ApplicationController
   end
 
   def search_gear
-    @search_params = gear_search_params
-    @gears = Gear.search(@search_params)
+    @gears = Gear.search(gear_search_params)
     render action: :index
   end
 

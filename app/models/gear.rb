@@ -27,12 +27,12 @@ class Gear < ApplicationRecord
   scope :narrow_down_brand, ->(brand) { where('brand = ?', brand) if brand.present? }
   scope :narrow_down_kind, ->(kind) { where('kind = ?', kind) if kind.present? }
 
-  scope :search, ->(search_params) do
-    return if search_params.blank?
+  scope :search, ->(gear_search_params) do
+    return if gear_search_params.blank?
 
-    narrow_down_name(search_params[:name])
-      .narrow_down_brand(search_params[:brand])
-      .narrow_down_kind(search_params[:kind])
+    narrow_down_name(gear_search_params[:name])
+      .narrow_down_brand(gear_search_params[:brand])
+      .narrow_down_kind(gear_search_params[:kind])
   end
 
   def get_search_keyword
