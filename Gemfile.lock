@@ -101,6 +101,9 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    debase (0.2.4.1)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.9)
     debug_inspector (0.0.3)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -279,6 +282,8 @@ GEM
     rubocop-rails (2.4.1)
       rack (>= 1.1)
       rubocop (>= 0.72.0)
+    ruby-debug-ide (0.7.0)
+      rake (>= 0.8.1)
     ruby-progressbar (1.10.1)
     ruby-vips (2.0.15)
       ffi (~> 1.9)
@@ -360,6 +365,7 @@ DEPENDENCIES
   carrierwave (~> 2.0, >= 2.0.1)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  debase
   devise
   devise-i18n
   devise-i18n-views
@@ -386,6 +392,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-rails
+  ruby-debug-ide
   sass-rails (~> 5.0)
   selenium-webdriver
   slim-rails
