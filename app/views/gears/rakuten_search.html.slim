@@ -1,5 +1,5 @@
 .display-4 class="text-center"
-  | 楽天検索結果
+  | 楽天市場検索結果
 
 - if @items.count > 0
     table.table
@@ -17,4 +17,4 @@
               = item['itemPrice']
 
 - else
-  | 商品が見つかりませんでした。
+  h2.text-center 商品が見つかりませんでした。

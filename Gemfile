@@ -59,6 +59,8 @@ group :development do
   gem 'rails-flog', require: 'flog'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
+  gem 'ruby-debug-ide'
+  gem 'debase'
 end
 
 group :test do

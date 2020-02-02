@@ -13,7 +13,7 @@ RSpec.describe '記事管理機能', type: :system do
     end
 
     it '正常に記事が投稿できること', js: true do
-      attach_file 'article_photo', "#{Rails.root}/app/assets/images/default.jpg"
+      attach_file 'image-file', "#{Rails.root}/app/assets/images/default.jpg"
       fill_in 'article_comment', with: 'hogehogehoge'
       attach_file 'article_gears_attributes_0_gear_image', "#{Rails.root}/app/assets/images/default.jpg"
       fill_in 'article_gears_attributes_0_name', with: 'hoge'
@@ -24,14 +24,15 @@ RSpec.describe '記事管理機能', type: :system do
       expect(page).to have_text('記事を登録しました。')
     end
 
-    it 'アイテム詳細の入力フォームが動的に増やすことができること', js: true do
+    it 'アイテムの入力フォームが動的に増減可能であること', js: true do
       click_on 'add-form'
-      expect(page).to have_css('#article_gears_attributes_1_name')
-    end
-
-    it 'アイテム詳細の入力フォームをへらすことができること', js: true do
-      click_on '削除'
-      expect(page).not_to have_css('#article_gears_attributes_0_name')
+      fields = all(:css, '.fields')
+      expect(fields[1]).to have_content ('アイテム画像')
+      within page.all('remove_nested_fields')[1] do
+        click_link '削除'
+      end
+      # click_on delete_btn[1]
+      expect(fields[1]).not_to have_content ('アイテム画像')
     end
 
     it '未入力の場合は投稿できないこと', js: true do

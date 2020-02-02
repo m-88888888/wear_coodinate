@@ -8,19 +8,19 @@ class GearsController < ApplicationController
   end
 
   def search_gear
-    @search_params = gear_search_params
-    @gears = Gear.search(@search_params)
+    @gears = Gear.search(gear_search_params)
     render action: :index
   end
 
-  def search
+  def search_article
     keyword = params[:search]
     @articles = Article.search(keyword)
     render 'articles/index'
   end
 
   def rakuten_search
-    keyword = params[:rakuten_search]
+    gear = Gear.find(params[:gear_id])
+    keyword = gear.get_search_keyword
     @items = RakutenWebService::Ichiba::Item.search(keyword: keyword)
   end
 
