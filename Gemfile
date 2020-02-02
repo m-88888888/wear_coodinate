@@ -56,11 +56,11 @@ group :development do
   gem 'annotate'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'debase'
   gem 'rails-flog', require: 'flog'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'ruby-debug-ide'
-  gem 'debase'
 end
 
 group :test do
@@ -94,5 +94,5 @@ gem 'jquery-ui-rails'
 gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 gem 'nested_form'
 gem 'rails-i18n', '~> 5.1'
-gem 'slim-rails'
 gem 'rakuten_web_service'
+gem 'slim-rails'

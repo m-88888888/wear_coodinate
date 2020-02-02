@@ -27,12 +27,12 @@ RSpec.describe '記事管理機能', type: :system do
     it 'アイテムの入力フォームが動的に増減可能であること', js: true do
       click_on 'add-form'
       fields = all(:css, '.fields')
-      expect(fields[1]).to have_content ('アイテム画像')
+      expect(fields[1]).to have_content 'アイテム画像'
       within page.all('remove_nested_fields')[1] do
         click_link '削除'
       end
       # click_on delete_btn[1]
-      expect(fields[1]).not_to have_content ('アイテム画像')
+      expect(fields[1]).not_to have_content 'アイテム画像'
     end
 
     it '未入力の場合は投稿できないこと', js: true do

@@ -36,9 +36,9 @@ class Gear < ApplicationRecord
   end
 
   def get_search_keyword
-    keyword = name + " "
-    keyword << brand + " "
-    keyword << kind + " "
+    keyword = name + ' '
+    keyword << brand + ' '
+    keyword << kind + ' '
     keyword << model_year.to_s
   end
 end
