@@ -20,7 +20,7 @@ RSpec.describe 'アイテムリスト', type: :system do
     end
 
     it '検索ボタンでコーデを検索できること', js: true do
-      click_on 'このアイテムを使ったコーデを検索', match: :first
+      click_on 'コーデを検索', match: :first
       expect(page).to have_selector("img[src$='nofile.jpg']")
     end
   end
