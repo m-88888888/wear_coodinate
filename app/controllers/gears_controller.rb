@@ -20,7 +20,8 @@ class GearsController < ApplicationController
   end
 
   def rakuten_search
-    keyword = params[:rakuten_search]
+    gear = Gear.find(params[:gear_id])
+    keyword = gear.get_search_keyword
     @items = RakutenWebService::Ichiba::Item.search(keyword: keyword)
   end
 

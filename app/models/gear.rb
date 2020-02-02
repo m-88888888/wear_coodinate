@@ -34,4 +34,11 @@ class Gear < ApplicationRecord
       .narrow_down_brand(search_params[:brand])
       .narrow_down_kind(search_params[:kind])
   end
+
+  def get_search_keyword
+    keyword = name + " "
+    keyword << brand + " "
+    keyword << kind + " "
+    keyword << model_year.to_s
+  end
 end

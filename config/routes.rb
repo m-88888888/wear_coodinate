@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   resources :gears, only: [:index] do
     get '/search', to: 'gears#search', as: 'search', on: :collection
     get '/narrow_down', to: 'gears#search_gear', as: 'narrow_down', on: :collection
-    post '/rakuten_search', to: 'gears#rakuten_search', as: 'rakuten_search', on: :collection
+    # post '/rakuten_search', to: 'gears#rakuten_search', as: 'rakuten_search', on: :collection
+    post '/rakuten_search', to: 'gears#rakuten_search', as: 'rakuten_search'
   end
 
   # いいね
