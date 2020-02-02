@@ -1,31 +1,33 @@
-- gears.each do |gear|
-  .col-md-4
-    .card.md-4
-      - if gear.gear_image?
-        = image_tag(gear.gear_image.url, class: "card-img")
-      - else
-        = image_tag("nofile.jpg", class: "card-img")
-      .card-body
-        table.table
-          tbody
-            tr
-              th アイテム名
-              td = gear.name
-            tr
-              th ブランド
-              td = gear.brand
-            tr
-              th 種類
-              td = gear.kind
-            tr
-              th モデル年式
-              td = gear.model_year
-      .card-footer
-        .row
-          .col-md-6
-            = form_with url: search_article_gears_path, method: :get, local: true do |f|
-              = f.hidden_field :search, :value => "#{gear.name}"
-              = f.submit 'コーデを検索', class: 'btn btn-primary'
-          .col-md-6
-            = form_with url: gear_rakuten_search_path(gear.id), method: :post, local: true do |f|
-              = f.submit '楽天で検索', class: 'btn btn-primary'
+.container
+  .row
+    - gears.each do |gear|
+      .col-md-4
+        .card.md-4
+          - if gear.gear_image?
+            = image_tag(gear.gear_image.url, class: "card-img")
+          - else
+            = image_tag("nofile.jpg", class: "card-img")
+          .card-body
+            table.table
+              tbody
+                tr
+                  th アイテム名
+                  td = gear.name
+                tr
+                  th ブランド
+                  td = gear.brand
+                tr
+                  th 種類
+                  td = gear.kind
+                tr
+                  th モデル年式
+                  td = gear.model_year
+          .card-footer
+            .row
+              .col-md-6
+                = form_with url: search_article_gears_path, method: :get, local: true do |f|
+                  = f.hidden_field :search, :value => "#{gear.name}"
+                  = f.submit 'コーデを検索', class: 'btn btn-primary'
+              .col-md-6
+                = form_with url: gear_rakuten_search_path(gear.id), method: :post, local: true do |f|
+                  = f.submit '楽天で検索', class: 'btn btn-primary'
