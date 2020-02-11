@@ -28,4 +28,24 @@ FactoryBot.define do
     comment { 'テストコメント' }
     association :user
   end
+
+  # factory :article do
+  #   id { 1 }
+  #   photo { File.new("#{Rails.root}/spec/fixtures/nofile.jpg") }
+  #   comment { 'hogehoge' }
+  #   created_at Time.now
+  #   updated_at Time.now
+  #   user_id { 1 }
+  #   like_count { 1 }
+
+  #   factory :article_with_gears do
+  #     transient do
+  #       gears_count { 2 }
+  #     end
+
+  #     after(:build) do |article, evaluator|
+  #       build_list(:gear3, evaluator.gears_count, article: article)
+  #     end
+  #   end
+  # end
 end

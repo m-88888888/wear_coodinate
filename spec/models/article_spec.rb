@@ -14,11 +14,11 @@
 require 'rails_helper'
 
 RSpec.describe Article, type: :model do
-  let(:user) { create(:user) }
+  let(:user) { build(:user) }
 
   describe 'validationのテスト' do
     it 'コーディネート画像、コーディネート紹介文があれば有効な状態であること' do
-      article = create(:article, user: user)
+      article = build(:article, user: user)
       article.valid?
       expect(article).to be_valid
     end
@@ -47,6 +47,12 @@ RSpec.describe Article, type: :model do
       article = build(:article, comment: comment)
       article.valid?
       expect(article).to be_valid
+    end
+
+    pending 'アイテムの種類が重複してるのならば無効な状態であること' do
+      article = build(:article_with_gears, user: user)
+      article.valid?
+      expect(article.errors).to include('アイテムの種類は最大1種類ずつのみ登録可能です。')
     end
   end
 end

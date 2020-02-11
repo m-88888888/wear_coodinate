@@ -20,7 +20,7 @@ FactoryBot.define do
     kind { 'ヘルメット' }
     brand { 'テストブランド' }
     model_year { 2019 }
-    association :article
+    article
   end
 
   factory :two_gear, class: Gear do
@@ -28,7 +28,7 @@ FactoryBot.define do
     kind { 'ヘルメット' }
     brand { 'テストブランド' }
     model_year { 2019 }
-    association :article
+    article
   end
 
   factory :gear3, class: Gear do
@@ -36,6 +36,23 @@ FactoryBot.define do
     kind { 'ヘルメット' }
     brand { 'OGASAKA' }
     model_year { 2019 }
-    association :article
+    article
   end
+
+  # factory :gear1, class: Gear do
+  #   name { 'fugafuga'}
+  #   kind { 'ヘルメット'}
+  #   brand { 'BURTON' }
+  #   model_year { 2020 }
+  #   association :article
+  # end
+
+  # factory :gear2, class: Gear do
+  #   name { 'DONE_DAYO'}
+  #   kind { 'ヘルメット'}
+  #   brand { 'BURTON' }
+  #   model_year { 2020 }
+  #   association :article
+  # end
+
 end
