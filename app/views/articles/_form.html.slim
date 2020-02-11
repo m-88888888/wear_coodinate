@@ -1,6 +1,6 @@
 .container
     = nested_form_for article, local: true do |f|
-        = render 'shared/flash', { object: f.object}
+        = render 'layouts/error', { object: f.object}
 
         .form-group
           .row
@@ -17,7 +17,7 @@
             = f.text_area :comment, class: "form-control"
         .row
           .col-10
-            h2 
+            h2
               | アイテム詳細
         = f.fields_for :gears do |g|
           .item

@@ -4,7 +4,7 @@
       | プロフィール編集
 
     = form_with model: @user, local: true do |f|
-      = render 'shared/flash', { object: f.object}
+      = render 'layouts/error', { object: f.object}
 
       .form-group
         = f.label :profile_image
@@ -28,7 +28,7 @@
         .custom-control.custom-radio.custom-control-inline
           = f.radio_button :gender, 2
           = f.label :gender, 'WOMEN',  value: "2"
-        
+
       .form-group
         = f.label :height
         = f.select :height, height_array, {}, class: "custom-select"
