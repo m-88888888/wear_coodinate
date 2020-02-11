@@ -15,7 +15,7 @@
 
 class Gear < ApplicationRecord
   mount_uploader :gear_image, GearImageUploader
-  belongs_to :article, optional: true
+  belongs_to :article
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :brand, presence: true
