@@ -16,27 +16,24 @@ class Article < ApplicationRecord
   belongs_to :user
   has_many :gears, inverse_of: :article
   accepts_nested_attributes_for :gears, allow_destroy: true
-  default_scope -> { order(created_at: :desc) }
-
   has_many :likes, dependent: :destroy
   # has_many :liking_users, through: :likes, source: :user
+  default_scope -> { order(created_at: :desc) }
 
   validates :photo, presence: true
   validates :comment, presence: true, length: { maximum: 200 }
-  validate :kind_uniq?, on: :create, on: :update
+  validate :kind_uniq
 
   scope :change_gender, ->(gender) { joins(:user).where('gender = ?', gender) }
   scope :rank, -> { find(Like.group(:article_id).order('count(article_id) desc').pluck(:article_id)) }
   scope :search, ->(keyword) { includes(:gears).where('gears.name LIKE ?', "%#{keyword}%").references(:gears) }
 
-  def kind_uniq?
+  def kind_uniq
     kinds = []
     gears.each do |gear|
       kinds << gear.kind
     end
 
-    if kinds.size != kinds.uniq.size
-      errors.add(:gear, 'アイテムの種類は最大1種類ずつのみ登録可能です。')
-    end
+    errors.add(:gear, 'アイテムの種類は最大1種類ずつのみ登録可能です。') if kinds.size != kinds.uniq.size
   end
 end
