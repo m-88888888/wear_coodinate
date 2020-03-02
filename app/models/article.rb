@@ -17,7 +17,6 @@ class Article < ApplicationRecord
   has_many :gears, inverse_of: :article
   accepts_nested_attributes_for :gears, allow_destroy: true
   has_many :likes, dependent: :destroy
-  # has_many :liking_users, through: :likes, source: :user
   default_scope -> { order(created_at: :desc) }
 
   validates :photo, presence: true
