@@ -15,6 +15,10 @@
 
 FactoryBot.define do
   factory :gear do
+    id { 1 }
+    article_id { 1 }
+    created_at { Time.now }
+    updated_at { Time.now }
     gear_image { File.new("#{Rails.root}/spec/fixtures/nofile.jpg") }
     name { 'test_NAME' }
     kind { 'ヘルメット' }
@@ -54,5 +58,4 @@ FactoryBot.define do
   #   model_year { 2020 }
   #   association :article
   # end
-
 end

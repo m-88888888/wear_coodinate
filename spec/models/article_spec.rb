@@ -49,10 +49,14 @@ RSpec.describe Article, type: :model do
       expect(article).to be_valid
     end
 
-    pending 'アイテムの種類が重複してるのならば無効な状態であること' do
-      article = build(:article_with_gears, user: user)
+    it 'アイテムの種類が重複してるのならば無効な状態であること' do
+      article = create(:article, user: user)
+      gear1 = create(:gear, article: article)
+      gear2 = create(:two_gear, article: article)
       article.valid?
-      expect(article.errors).to include('アイテムの種類は最大1種類ずつのみ登録可能です。')
+      gear1.valid?
+      gear2.valid?
+      expect(article.errors[:gear]).to include('アイテムの種類は最大1種類ずつのみ登録可能です。')
     end
   end
 end
