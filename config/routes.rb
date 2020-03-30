@@ -24,6 +24,5 @@ Rails.application.routes.draw do
   end
 
   # いいね
-  post   '/like/:article_id' => 'likes#like',   as: 'like'
-  delete '/like/:article_id' => 'likes#unlike', as: 'unlike'
+  resources :likes, only: [:create, :destroy]
 end

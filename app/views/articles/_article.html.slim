@@ -17,7 +17,7 @@
                   p.card-text
                     small.text-muted
                       | #{article.user.height}cm
-            .card-footer id="like-link-#{article.id}"
+            .card-footer id="like-btn-#{article.id}"
               == render partial: "likes/like", locals: { article: article }
 - else
   h1 投稿された記事が見つかりません。

@@ -1,20 +1,19 @@
 class LikesController < ApplicationController
-  before_action :set_valiables
+  before_action :set_id_name
 
-  def like
-    @like = current_user.likes.new(article_id: params[:article_id])
-    @like.save
+  def create
+    @like = current_user.likes.create!(article_id: @article.id)
   end
 
-  def unlike
-    @like = current_user.likes.find_by(article_id: params[:article_id])
-    @like.destroy
+  def destroy
+    @like = current_user.likes.find_by(article_id: params[:id])
+    @like.destroy!
   end
 
   private
 
-  def set_valiables
-    @article = Article.find(params[:article_id])
-    @id_name = "#like-link-#{@article.id}"
+  def set_id_name
+    @article = Article.find(params[:id])
+    @id_name = "#like-btn-#{@article.id}"
   end
 end

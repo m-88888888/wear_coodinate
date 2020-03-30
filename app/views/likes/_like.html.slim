@@ -1,16 +1,18 @@
 - if user_signed_in?
-    - if current_user.likes.find_by(article_id: article.id)
-        = link_to unlike_path(article.id), method: :delete, remote: true do
-            .like-btn.flowbtn11.fl_pf11
-                = icon("fas", "heart")
-                = article.likes.count
-
-    - else
-        = link_to like_path(article.id), method: :post, remote: true do
-            .like-btn.flowbtn12.fl_pf12
-                = icon("far", "heart")
-                = article.likes.count
-- else
-    .like-btn.flowbtn11.fl_pf11
+  - if current_user.likes.find_by(article_id: article.id)
+    = form_with url: like_path(article.id), method: :delete, remote: true do |f|
+      = button_tag type: "submit", class: "like-btn flowbtn12 fl_pf12" do
         = icon("fas", "heart")
         = article.likes.count
+  - else
+    = form_with url: likes_path, remote: true do |f|
+      = hidden_field_tag :id, article.id
+      = button_tag type: "submit", class: "like-btn flowbtn11 fl_pf11" do
+        = icon("fas", "heart")
+        = article.likes.count
+
+
+- else
+  .like-btn.flowbtn11.fl_pf11
+  = icon("fas", "heart")
+	= article.likes.count
